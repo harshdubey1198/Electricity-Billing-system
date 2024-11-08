@@ -1,0 +1,374 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: url("resources/img/electricity_background.png") center/cover no-repeat;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+/* Header and Footer */
+header,
+footer {
+    flex-shrink: 0;
+    background-color: #333;
+    color: #000000;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.header-container,
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: #ffffff;
+}
+
+h1 {
+    color: #3a005a;
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #6c6afa;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav ul li:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Hero Section */
+main {
+    flex-grow: 1;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* Left Section (Login Form) */
+.left-section {
+    flex: 1;
+    max-width: 70%;
+    padding-right: 20px;
+}
+
+.left-section h2 {
+    font-size: 3rem;
+    color: #3a005a;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 1px white, -1px -1px 2px white, 1px -1px 2px white, -1px 1px 2px white;
+}
+
+.left-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form Elements */
+input,
+textarea {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #f76c6c;
+}
+
+button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #f76c6c, #ff5656);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff5656, #f76c6c);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+p {
+    margin-top: 10px;
+}
+
+p a {
+    color: #f76c6c;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Right Section (Useful Links) */
+.right-section {
+    max-width: 300px;
+}
+
+.right-section h3 {
+    font-size: 22px;
+    color: #3a005a;
+    margin-bottom: 15px;
+    text-shadow: 0.5px 0.5px 1px white, -0.5px -0.5px 1px white;
+}
+
+.right-section ul {
+    list-style: none;
+}
+
+.right-section ul li {
+    margin-bottom: 10px;
+}
+
+.right-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.right-section ul li a:hover {
+    color: #f76c6c;
+    transform: scale(1.1);
+}
+
+/* Footer Social Icons */
+.footer-right .social-icon {
+    display: inline-block; /* Ensures icons are inline */
+    margin-right: 15px; /* Adds space between icons */
+}
+
+/* Footer Social Icons */
+.footer-right .social-icon i,
+.footer-right .social-icon img {
+    font-size: 30px;
+    color: #3a005a;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.footer-right .social-icon i:hover,
+.footer-right .social-icon img:hover {
+    transform: scale(1.2);
+    color: #ff5656;
+    filter: brightness(1.2);
+}
+
+/* About Us and Contact Us Sections */
+.about-us,
+.contact-us {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 60px;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #333;
+}
+
+.about-us h2,
+.contact-us h2 {
+    color: #3a005a;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.about-us p,
+.contact-us p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.contact-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Help Section */
+.help-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.help-container {
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Help Section Columns */
+.help-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Remove bullets from the list items */
+.help-container ul {
+    list-style-type: none; /* Removes bullets */
+    padding: 0; /* Removes default padding */
+}
+
+.help-left,
+.help-right {
+    width: 48%;
+}
+
+/* Help and FAQ Styling */
+.help-container h2 {
+    font-size: 2em;
+    color: #3a005a;
+    text-align: center;
+    width: 100%;
+}
+
+.help-container p,
+.help-container li,
+.password-recovery-container p {
+    line-height: 1.6;
+    color: black;
+}
+
+.faq-list li {
+    margin-bottom: 20px;
+}
+
+/* Password Recovery Section */
+.password-recovery-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.password-recovery-container {
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+.password-recovery-container h2 {
+    font-size: 2.5rem;
+    color: #3a005a;
+    margin-bottom: 20px;
+}
+
+.password-recovery-container label {
+    display: block;
+    font-weight: bold;
+    color: #3a005a;
+    margin-bottom: 8px;
+}
+
+.password-recovery-container input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.password-recovery-container button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #f76c6c, #ff5656);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.password-recovery-container button:hover {
+    background: linear-gradient(135deg, #ff5656, #f76c6c);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+/* Footer Sticky */
+footer {
+    position: sticky;
+    bottom: 0;
+    padding: 15px;
+    background-color: #ffffff;
+}

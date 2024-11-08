@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Bill</title>
+    <link rel="stylesheet" href="userinfo2.css">
+</head>
+<body>
+    <div class="bill-container">
+        <header class="bill-header">
+            <h1>Electricity Bill</h1>
+        </header>
+
+        <!-- Customer Information Section -->
+        <section class="customer-info">
+            <h2>Customer Information</h2>
+            <label for="customer-id"><strong>Customer ID:</strong></label>
+            <input type="text" id="customer-id" placeholder="Enter Customer ID">
+
+            <label for="name"><strong>Name:</strong></label>
+            <input type="text" id="name" placeholder="Enter Name">
+
+            <label for="address"><strong>Address:</strong></label>
+            <input type="text" id="address" placeholder="Enter Address">
+
+            <label for="meter-number"><strong>Meter Number:</strong></label>
+            <input type="text" id="meter-number" placeholder="Enter Meter Number">
+        </section>
+
+        <!-- Billing Period Section -->
+        <section class="billing-period">
+            <h2>Billing Period</h2>
+            <label for="billing-from"><strong>From:</strong></label>
+            <input type="date" id="billing-from">
+
+            <label for="billing-to"><strong>To:</strong></label>
+            <input type="date" id="billing-to">
+        </section>
+
+        <!-- Meter Readings Section -->
+        <section class="meter-reading">
+            <h2>Meter Readings</h2>
+            <label for="previous-reading"><strong>Previous Reading:</strong></label>
+            <input type="number" id="previous-reading" placeholder="Enter Previous Reading (kWh)">
+
+            <label for="current-reading"><strong>Current Reading:</strong></label>
+            <input type="number" id="current-reading" placeholder="Enter Current Reading (kWh)">
+            
+            <label for="units-consumed"><strong>Units Consumed:</strong></label>
+            <input type="number" id="units-consumed" placeholder="Units Consumed" readonly>
+        </section>
+
+        <!-- Charges Section -->
+        <section class="charges">
+            <h2>Charges</h2>
+            <label for="rate-per-unit"><strong>Rate per Unit:</strong></label>
+            <input type="number" id="rate-per-unit" placeholder="Enter Rate per Unit (₹)">
+
+            <label for="fixed-charges"><strong>Fixed Charges:</strong></label>
+            <input type="number" id="fixed-charges" placeholder="Enter Fixed Charges (₹)">
+            
+            <label for="fuel-surcharge"><strong>Fuel Surcharge:</strong></label>
+            <input type="number" id="fuel-surcharge" placeholder="Enter Fuel Surcharge (₹)">
+
+            <label for="electricity-duty"><strong>Electricity Duty:</strong></label>
+            <input type="number" id="electricity-duty" placeholder="Enter Electricity Duty (₹)">
+            
+            <label for="total-amount"><strong>Total Bill Amount:</strong></label>
+            <input type="text" id="total-amount" placeholder="Total Amount" readonly>
+        </section>
+
+        <!-- Bill Summary Section -->
+        <section class="due-date">
+            <h2>Bill Summary</h2>
+            <p><strong>Total Payable:</strong> <span id="total-payable">₹0.00</span></p>
+            <label for="due-date"><strong>Due Date:</strong></label>
+            <input type="date" id="due-date">
+        </section>
+
+        <!-- Back Button -->
+        <div class="back-button-container">
+            <button onclick="goBack()">Back</button>
+        </div>
+
+        <!-- Calculate Button -->
+        <div class="calculate-button-container">
+            <button onclick="calculateBill()">Calculate Bill</button>
+        </div>
+
+        <footer class="bill-footer">
+            <p>Thank you for using our services!</p>
+        </footer>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        // Function to calculate units consumed and total amount
+        function calculateBill() {
+            const previousReading = parseFloat(document.getElementById('previous-reading').value) || 0;
+            const currentReading = parseFloat(document.getElementById('current-reading').value) || 0;
+            const ratePerUnit = parseFloat(document.getElementById('rate-per-unit').value) || 0;
+            const fixedCharges = parseFloat(document.getElementById('fixed-charges').value) || 0;
+            const fuelSurcharge = parseFloat(document.getElementById('fuel-surcharge').value) || 0;
+            const electricityDuty = parseFloat(document.getElementById('electricity-duty').value) || 0;
+
+            // Calculate units consumed
+            const unitsConsumed = currentReading - previousReading;
+            document.getElementById('units-consumed').value = unitsConsumed;
+
+            // Calculate total amount
+            const energyCharges = unitsConsumed * ratePerUnit;
+            const totalAmount = energyCharges + fixedCharges + fuelSurcharge + electricityDuty;
+            document.getElementById('total-amount').value = ₹${totalAmount.toFixed(2)};
+            document.getElementById('total-payable').textContent = ₹${totalAmount.toFixed(2)};
+        }
+    </script>
+</body>
+</html>

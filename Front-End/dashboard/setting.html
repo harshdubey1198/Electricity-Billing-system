@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Bill Settings</title>
+    <link rel="stylesheet" href="setting1.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Electricity Bill Settings</h2>
+
+        <!-- Account Information Section -->
+        <section class="section">
+            <h3>Account Information</h3>
+            <label for="account-name">Account Holder Name:</label>
+            <input type="text" id="account-name" placeholder="Enter account holder name">
+
+            <label for="account-number">Account Number:</label>
+            <input type="text" id="account-number" placeholder="Enter account number">
+
+            <label for="address">Address:</label>
+            <textarea id="address" rows="2" placeholder="Enter address"></textarea>
+        </section>
+
+        <!-- Bill Details Section -->
+        <section class="section">
+            <h3>Bill Details</h3>
+            <label for="units">Units Consumed:</label>
+            <input type="number" id="units" placeholder="Enter units consumed">
+
+            <label for="rate">Rate per Unit:</label>
+            <input type="number" id="rate" placeholder="Enter rate per unit">
+
+            <label for="total-amount">Total Amount:</label>
+            <input type="text" id="total-amount" placeholder="Amount will calculate automatically" readonly>
+        </section>
+
+        <!-- Notification Settings Section -->
+        <section class="section">
+            <h3>Notification Settings</h3>
+            <label>
+                <input type="checkbox" id="email-notif"> Email Notifications
+            </label>
+            <label>
+                <input type="checkbox" id="sms-notif"> SMS Notifications
+            </label>
+            <button class="btn">Save Preferences</button>
+        </section>
+
+        <!-- Payment Section -->
+        <section class="section">
+            <h3>Make a Payment</h3>
+            <button class="btn payment-btn">Pay Bill</button>
+        </section>
+    </div>
+
+    <!-- JavaScript to calculate total amount based on units and rate -->
+    <script>
+        document.getElementById('rate').addEventListener('input', calculateAmount);
+        document.getElementById('units').addEventListener('input', calculateAmount);
+
+        function calculateAmount() {
+            const units = document.getElementById('units').value;
+            const rate = document.getElementById('rate').value;
+            const totalAmount = units && rate ? units * rate : '';
+            document.getElementById('total-amount').value = totalAmount ? ₹${totalAmount} : '';
+        }
+    </script>
+</body>
+</html>

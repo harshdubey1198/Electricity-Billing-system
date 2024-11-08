@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Usage</title>
+    <link rel="stylesheet" href="css_for_dashboard/usage1.css">
+</head>
+<body>
+
+    <div class="usage-container">
+        <h1>Energy Usage</h1>
+
+        <!-- Current Usage Section -->
+        <section class="current-usage">
+            <h2>Current Usage</h2>
+            <label for="current-meter">Current Meter Reading:</label>
+            <input type="number" id="current-meter" placeholder="Enter current reading"> kWh
+            
+            <label for="previous-meter">Previous Meter Reading:</label>
+            <input type="number" id="previous-meter" placeholder="Enter previous reading"> kWh
+            
+            <p><strong>Current Month Consumption:</strong> 300 kWh</p>
+            
+            <label for="cost">Cost for Current Period:</label>
+            <input type="text" id="cost" placeholder="Calculated cost"> Rs.
+        </section>
+
+        <!-- Usage History Section -->
+        <section class="usage-history">
+            <h2>Usage History</h2>
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Usage (kWh)</th>
+                        <th>Cost (Rs.)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>September</td>
+                        <td>280</td>
+                        <td>1100</td>
+                    </tr>
+                    <tr>
+                        <td>August</td>
+                        <td>290</td>
+                        <td>1150</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Additional Insights Section -->
+        <section class="additional-insights">
+            <h2>Additional Insights</h2>
+            <p><strong>Average Daily Usage:</strong> 10 kWh</p>
+            <p><strong>Peak Usage Time:</strong> 6:00 PM - 9:00 PM</p>
+        </section>
+    </div>
+
+</body>
+</html>

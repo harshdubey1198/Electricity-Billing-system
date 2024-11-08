@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Electricity Billing Dashboard</title>
+        <link rel="stylesheet" href="css_for_dashboard/dashboard.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body >
+    
+        <!-- Toggle Sidebar Script -->
+        <script>
+            function toggleSidebar() {
+                const sidebar = document.getElementById("sidebar");
+                sidebar.classList.toggle("open");
+            }
+        </script>
+
+        <!-- Header with Website Name and Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="index.html">
+                <h1>Electricity Billing System</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Home</a></li>
+                    <li><a href="billing.html">Billing</a></li>
+                    <li><a href="usage.html">Usage</a></li>
+                    <li><a href="userprofile.html">User Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+        <!-- Main Dashboard Container -->
+        <div class="dashboard-container">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <ul>
+                    <li><a href="userinfo.html">User Info</a></li>
+                    <li><a href="payment1.html">Payment History</a></li>
+                    <li><a href="setting.html">Settings</a></li>
+                    <li><a href="/help.html">Help</a></li>
+                </ul>
+            </aside>
+
+            <!-- Dashboard Content -->
+            <main class="dashboard-content">
+                <div class="card">
+                    <h2>Current Usage</h2>
+                    <p>300 kWh</p>
+                </div>
+                <div class="card">
+                    <h2>Billing Summary</h2>
+                    <p>Due: Rs.120</p>
+                    <button>Pay Now</button>
+                </div>
+                <div class="card">
+                    <h2>Recent Payments</h2>
+                    <ol>
+                        <li>October: Rs.100</li>
+                        <li>September: Rs.90</li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h2>Notifications</h2>
+                    <p>No new alerts</p>
+                </div>
+            </main>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <p>&copy; 2024 Electricity Billing System. All Rights Reserved.</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://www.facebook.com/MPEBIndore" target="_blank" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/MPEBIndore" target="_blank" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/MPEB_Indore/" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: url("dashboard_background.png") center/cover no-repeat;
+    position: relative;
+}
+
+/* Header and Footer */
+header,
+footer {
+    flex-shrink: 0;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.header-container,
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: #ffffff;
+}
+
+/* Footer Social Icons */
+.footer-right .social-icon {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.footer-right .social-icon i,
+.footer-right .social-icon img {
+    font-size: 30px;
+    color: #3a005a;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.footer-right .social-icon i:hover,
+.footer-right .social-icon img:hover {
+    transform: scale(1.2);
+    color: #ff5656;
+    filter: brightness(1.2);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #6c6afa;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav ul li:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Billing Container */
+.billing-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Headers */
+.billing-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.billing-container h2 {
+    color: #444;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+/* Account Summary and Bill Details */
+form.account-summary,
+.bill-details,
+.payment-options,
+.billing-history,
+.usage-info,
+.notifications,
+.support {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+form.account-summary label,
+.bill-details label,
+.payment-options label {
+    display: block;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+form.account-summary input,
+.bill-details input,
+.payment-options select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Payment Button */
+.pay-now {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.pay-now:hover {
+    background-color: #45a049;
+}
+
+/* Billing History Table */
+.billing-history table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.billing-history th,
+.billing-history td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.billing-history th {
+    background-color: #f2f2f2;
+    color: #333;
+}
