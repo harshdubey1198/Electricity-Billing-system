@@ -1,5 +1,5 @@
 const User = require('../models/userModel');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');  
 const jwt = require('jsonwebtoken');
 const emailService = require('./emailService');
 
@@ -13,11 +13,12 @@ const signupService = async (data) => {
     await newUser.save();
     return newUser;
 };
+
 const loginService = async (email, password) => {
     const user = await User.findOne({ email });
     if (!user) throw new Error('User not found.');
 
-    const isMatch = await user.comparePassword(password);
+    const isMatch = await user.comparePassword(password);  
     if (!isMatch) throw new Error('Invalid credentials.');
 
     const token = user.generateJWT();
