@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const emailService = require('./emailService');
 
@@ -8,11 +9,10 @@ const signupService = async (data) => {
     const userExists = await User.findOne({ email });
     if (userExists) throw new Error('Email already registered.');
 
-    const newUser = new User({ firstName, lastName, email, password: new User().hashPassword(password) });
+    const newUser = new User({ firstName, lastName, email, password });
     await newUser.save();
     return newUser;
 };
-
 const loginService = async (email, password) => {
     const user = await User.findOne({ email });
     if (!user) throw new Error('User not found.');
@@ -43,7 +43,7 @@ const recoverAccountService = async (token, newPassword) => {
 
         if (!user) throw new Error('Invalid or expired reset token.');
 
-        user.password = new User().hashPassword(newPassword);
+        user.password = newPassword;
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
 
