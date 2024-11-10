@@ -12,5 +12,7 @@ router.post('/recover-account', authController.recoverAccountController);
 
 router.put('/update-customer/:id', authController.updateCustomerController);
 
+router.get('/user/:id', authController.getUserDataController);
+
 
 module.exports = router;

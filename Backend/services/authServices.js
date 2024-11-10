@@ -75,6 +75,17 @@ const updateCustomerService = async (customerId, updateData) => {
         throw new Error(error.message);
     }
 };
+const getUserDataService = async (userId) => {
+    try {
+        const user = await User.findById(userId); 
+        if (!user) {
+            throw new Error('User not found');
+        }
+        return user; 
+    } catch (error) {
+        throw new Error(error.message); 
+    }
+};
 
 
-module.exports = { signupService, loginService, resetPasswordService, recoverAccountService, updateCustomerService };
+module.exports = { getUserDataService , signupService, loginService, resetPasswordService, recoverAccountService, updateCustomerService };
