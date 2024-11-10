@@ -99,6 +99,7 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .social-buttons .btn .fab {
@@ -107,7 +108,7 @@ input:checked + .slider:before {
 }
 
 .social-buttons .btn:hover {
-  background-color: #ddd;
+  background-color: #999999;
 }
 
 /* Ensuring uniform button sizes */
