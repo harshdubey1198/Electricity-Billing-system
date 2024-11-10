@@ -168,7 +168,7 @@ function toggleEdit() {
 function saveProfile() {
   
   const userId = JSON.parse(localStorage.getItem('authuser')).user._id; 
-  const apiUrl = `http://localhost:7200/api/auth/user/${userId}`;
+  const apiUrl = `https://electricity-billing-system.onrender.com/api/auth/user/${userId}`;
   
   // Gather updated data
   const updatedData = {

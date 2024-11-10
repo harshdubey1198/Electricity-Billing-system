@@ -9,7 +9,7 @@ const sendResetPasswordEmail = async (email, token) => {
         },
     });
 
-    const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
+    const resetLink = `${process.env.FRONTEND_URL}?token=${token}`;
     
     const mailOptions = {
         from: process.env.EMAIL_USER,
