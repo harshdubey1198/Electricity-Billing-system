@@ -4,25 +4,28 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Align content in a row for sidebar and main content */
   height: 100vh;
-  background-image: url("/electricity_background.png");
+  background-image: url("/Front-End/Bootstrap/electricity_background.png");
   background-size: cover;
 }
 
 /* Sidebar styling */
 .sidebar {
-  width: 250px;
-  background-color: #ffffff;
-  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f4f4f4;
+  padding: 20px;
   height: 100vh;
-  padding-top: 20px;
+  width: 200px;
   position: fixed;
+  left: 0;
+  top: 0;
 }
 
 #logo_image {
   height: 50px;
-  margin-left: 25px;
   margin-top: 25px;
 }
 
@@ -30,37 +33,50 @@ body {
   text-align: center;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
+/* Styling for Sidebar Links */
+.sidebar a {
+  width: 100%;
 }
 
-.sidebar ul li {
+.sidebar .flex-column {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;
+}
+
+.sidebar .w-75 {
+  width: 100%;
+}
+
+/* Active button highlight */
+.sidebar a.active button {
+  background-color: #007bff; /* Highlight active button */
+  color: white;
+}
+
+/* Sidebar button styling */
+.sidebar button {
+  width: 200px;
   padding: 15px;
+  border: none;
+  background-color: #dcd8d8;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
   text-align: center;
+  border-radius: 5px;
+  transition: background-color 0.5s, transform 0.3s;
 }
 
-.sidebar ul li i {
-  font-size: 24px;
-  margin-right: 20px;
-  transition: margin 0.3s;
+.sidebar button:hover {
+  background-color: #848383;
+  transform: scale(1.05);
 }
 
-.sidebar ul li a {
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-}
-
-.sidebar ul li:hover {
-  background-color: #d9cdfc;
+/* Active menu button */
+.sidebar a.active button {
+  background-color: #007bff;  /* Highlight color for active menu */
   color: white;
-  font-size: 25px;
-}
-
-.sidebar ul li.active {
-  background-color: #ccbbff;
-  color: white;
-  font-size: 25px;
 }
 
 /* Content styling */

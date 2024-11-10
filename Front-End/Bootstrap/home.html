@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/dashboard_style.css">
+    <link rel="stylesheet" href="/Front-End/Bootstrap/dashboard_style.css">
 
     <style>
         /* General container styles */
@@ -36,6 +36,10 @@
             /* Adjust text color */
         }
 
+        hover-shadow:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
 
         .profile-image img {
             width: 100px;
@@ -185,15 +189,39 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <img id="logo_image" src="Ele_bill_logo.png" alt="Ele-Bill">
-        <ul>
-            <li><a href="/home.html"><i class="fas fa-home"></i><span>Home</span></a></li>
-            <li><a href="/profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
-            <li><a href="/payments.html"><i class="fas fa-wallet"></i><span>Payments</span></a></li>
-            <li><a href="/bill.html"><i class="fas fa-receipt"></i><span>Pay Bills</span></a></li>
-            <li><a href="/setting.html"><i class="fas fa-cog"></i><span>Settings</span></a></li>
-            <li><a href="/logout.html"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
-        </ul>
-    </div>
+        <div class="flex-column align-items-center">
+            <a class="w-75" href="/Front-End/Bootstrap/home.html">
+                <button class="w-100 rounded my-2 mt-5">
+                    <i class="fas fa-home"></i> Home
+                </button>
+            </a>
+            <a class="w-75" href="/Front-End/Bootstrap/profile.html">
+                <button class="w-100 rounded my-2">
+                    <i class="fas fa-user"></i> Profile
+                </button>
+            </a>
+            <a class="w-75" href="/Front-End/Bootstrap/payments.html">
+                <button class="w-100 rounded my-2">
+                    <i class="fas fa-credit-card"></i> Payments
+                </button>
+            </a>
+            <a class="w-75" href="/Front-End/Bootstrap/bill.html">
+                <button class="w-100 rounded my-2">
+                    <i class="fas fa-file-invoice"></i> Bills
+                </button>
+            </a>
+            <a class="w-75" href="/Front-End/Bootstrap/setting.html">
+                <button class="w-100 rounded my-2">
+                    <i class="fas fa-cogs"></i> Settings
+                </button>
+            </a>
+            <a class="w-75" href="/Front-End/Bootstrap/login.html">
+                <button class="w-100 rounded my-2">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </a>
+        </div>
+    </div>    
 
     <!-- Main Content -->
     <div class="content">
@@ -204,7 +232,7 @@
         <!-- Profile Overview -->
         <div class="profile-overview">
             <div class="profile-image">
-                <img src="/profile_image.jpg" alt="Profile Picture">
+                <img src="/Front-End/Bootstrap/profile_image.jpg" alt="Profile Picture">
             </div>
             <div class="profile-info">
                 <h3>John Doe</h3>
@@ -234,17 +262,17 @@
 
         <!-- Quick Actions -->
         <div class="quick-actions">
-            <a href="/profile.html" class="btn">Update Profile</a>
-            <a href="/payments.html" class="btn">Payment History</a>
-            <a href="/bill.html" class="btn">View Bills</a>
+            <a href="/Front-End/Bootstrap/profile.html" class="btn">Update Profile</a>
+            <a href="/Front-End/Bootstrap/payments.html" class="btn">Payment History</a>
+            <a href="/Front-End/Bootstrap/bill.html" class="btn">View Bills</a>
         </div>
 
         <!-- Recent Notifications -->
         <div class="notifications">
             <h3>Recent Notifications</h3>
             <ul>
-                <li><i class="fas fa-bell"></i> Bill due in 5 days. <a href="/bill.html">Pay Now</a></li>
-                <li><i class="fas fa-bell"></i> Profile update required. <a href="/profile.html">Update Profile</a></li>
+                <li><i class="fas fa-bell"></i> Bill due in 5 days. <a href="/Front-End/Bootstrap/bill.html">Pay Now</a></li>
+                <li><i class="fas fa-bell"></i> Profile update required. <a href="/Front-End/Bootstrap/profile.html">Update Profile</a></li>
             </ul>
         </div>
 
@@ -270,7 +298,7 @@
 
     </div>
 
-    <script src="/dashboard_script.js"></script>
+    <script src="/Front-End/Bootstrap/dashboard_script.js"></script>
 
 </body>
 
