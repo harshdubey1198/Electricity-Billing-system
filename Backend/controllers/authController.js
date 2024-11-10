@@ -51,6 +51,16 @@ const updateCustomerController = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
+const getUserDataController = async (req, res) => {
+    try {
+        const userId = req.params.id; 
+        const user = await authService.getUserDataService(userId); 
+
+        res.status(200).json({ message: 'User data fetched successfully', user });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
 
 
-module.exports = { signupController, loginController, resetPasswordController, recoverAccountController, updateCustomerController };
+module.exports = {getUserDataController, signupController, loginController, resetPasswordController, recoverAccountController, updateCustomerController };
