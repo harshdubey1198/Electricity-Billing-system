@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Electricity Billing System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./Css/dashboard_style.css">
+    <style>
+        /* Center the content and make the background translucent */
+        .faq-section {
+            display: flex;
+            justify-content: center;
+            /* Horizontally center */
+            align-items: center;
+            /* Vertically center */
+            height: 100vh;
+            /* Full viewport height */
+            background: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent background */
+            position: relative;
+        }
+
+        /* Container for the FAQ content */
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            /* Stack FAQ items vertically */
+            width: 80%;
+            /* Adjust width as needed */
+            max-width: 1000px;
+            /* Set a maximum width */
+            border-radius: 10px;
+            overflow: hidden;
+            /* Hide overflow content */
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            max-height: 80vh;
+            /* Set a maximum height for scrolling */
+            overflow-y: auto;
+            /* Allow scrolling if content exceeds height */
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h3 {
+            font-size: 1.25rem;
+            color: #24023f;
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .cancel-redirect {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .cancel-redirect a {
+            color: #000000;
+            /* Button color for cancel link */
+            text-decoration: none;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .faq-container {
+                width: 100%;
+                /* Ensure it takes full width on small screens */
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .faq-item h3 {
+                font-size: 1.1rem;
+            }
+
+            .faq-item p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>How do I view my electricity bill?</h3>
+                <p>You can view your electricity bill by logging into your account and navigating to the 'Billing'
+                    section, where all your recent bills are listed.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I pay my bill?</h3>
+                <p>To pay your bill, simply visit the 'Pay Bill' section in your account, select the bill you want to
+                    pay, and choose your preferred payment method.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What should I do if I think my bill is incorrect?</h3>
+                <p>If you believe your bill is incorrect, please file a dispute via 'Help and Support' section in Settings menu or
+                    email us at support@electricitybilling.com for further assistance.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How can I update my contact information?</h3>
+                <p>To update your contact details, go to the 'Account Settings' section, and you can edit your phone
+                    number, email, and address there.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I reset my password?</h3>
+                <p>If you've forgotten your password, click on the 'Forgot Password' link on the login page to receive a
+                    password reset email.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I contact customer support?</h3>
+                <p>You can reach our customer support by visiting the 'Help' section, or by emailing us at
+                    support@electricitybilling.com.</p>
+            </div>
+
+            <p class="cancel-redirect"><a href="/setting.html">Back to Settings</a></p>
+        </div>
+    </section>
+
+</body>
+
+</html>
