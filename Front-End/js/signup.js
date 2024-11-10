@@ -43,7 +43,7 @@ signupForm.addEventListener('submit', async (event) => {
         console.log('User data saved to Realtime Database');
 
         // Optionally, redirect the user to another page after signup
-        window.location.href = 'login.html';  // Redirect to login page after signup
+        window.location.href = 'index.html';  // Redirect to login page after signup
     } catch (error) {
         console.error('Error signing up:', error.message);
         alert('Signup failed. Please try again.');
