@@ -1,5 +1,5 @@
-const User = require('../models/userModel');
-const bcryptjs = require('bcryptjs');  
+const User = require('../models/customerModel');
+const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const emailService = require('./emailService');
 
@@ -18,7 +18,7 @@ const loginService = async (email, password) => {
     const user = await User.findOne({ email });
     if (!user) throw new Error('User not found.');
 
-    const isMatch = await user.comparePassword(password);  
+    const isMatch = await user.comparePassword(password);
     if (!isMatch) throw new Error('Invalid credentials.');
 
     const token = user.generateJWT();
@@ -31,7 +31,7 @@ const resetPasswordService = async (email) => {
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     user.resetPasswordToken = token;
-    user.resetPasswordExpires = Date.now() + 3600000; 
+    user.resetPasswordExpires = Date.now() + 3600000;
     await user.save();
 
     await emailService.sendResetPasswordEmail(email, token);
@@ -54,5 +54,23 @@ const recoverAccountService = async (token, newPassword) => {
         throw new Error('Error while recovering account.');
     }
 };
+const updateCustomerService = async (email, updateData) => {
+    try {
+        const updatedCustomer = await User.findByIdAndUpdate(
+            email,
+            { $set: updateData },
+            { new: true, runValidators: true }
+        );
 
-module.exports = { signupService, loginService, resetPasswordService, recoverAccountService };
+        if (!updatedCustomer) {
+            throw new Error('Customer not found');
+        }
+
+        return updatedCustomer;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};
+
+
+module.exports = { signupService, loginService, resetPasswordService, recoverAccountService, updateCustomerService };

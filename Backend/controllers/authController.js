@@ -3,11 +3,13 @@ const authService = require('../services/authServices');
 const signupController = async (req, res) => {
     try {
         const newUser = await authService.signupService(req.body);
-        res.status(201).json({ message: 'User registered successfully', user: newUser });
+        const token = newUser.generateJWT();
+        res.status(201).json({ message: 'User registered successfully', user: newUser, token });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 };
+
 
 const loginController = async (req, res) => {
     try {
@@ -39,4 +41,15 @@ const recoverAccountController = async (req, res) => {
     }
 };
 
-module.exports = { signupController, loginController, resetPasswordController, recoverAccountController };
+const updateCustomerController = async (req, res) => {
+    try {
+        const email = req.params.id;
+        const updateData = req.body;
+        const updatedCustomer = await authService.updateCustomerService(email, updateData);
+        res.status(200).json({ message: 'Customer updated successfully', updatedCustomer });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
+module.exports = { signupController, loginController, resetPasswordController, recoverAccountController, updateCustomerController };

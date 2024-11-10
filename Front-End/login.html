@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BootStrap-Practice</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="bootstrap-aadi.css">
+</head>
+
+<body>
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Toggle Switch -->
+    <div class="switch-container">
+      <label class="switch">
+        <input type="checkbox" id="toggleSwitch" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Logo Image -->
+    <img id="logo_image" src="./resources/img/Ele_bill_logo.png" alt="Ele-Bill">
+
+    <!-- Pills content -->
+    <div class="tab-content">
+      <!-- Login Form -->
+      <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+        <form>
+          <div class="text-center mb-3">
+            <p>Sign in with</p><br>
+            
+            <div class="social-buttons">
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-google"></i>
+              </button>
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-twitter"></i>
+              </button>
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-facebook-f"></i>
+              </button>
+            </div>
+          </div>
+
+          <p class="text-center">or:</p>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="loginName">Email or username</label>
+            <input type="email" id="loginName" class="form-control" />
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" class="form-control" />
+          </div>
+
+          <!-- 2 column grid layout -->
+          <div class="row mb-4">
+            <div class="col-md-6 d-flex justify-content-center">
+              <!-- Checkbox -->
+              <div class="form-check mb-3 mb-md-0">
+                <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                <label class="form-check-label" for="loginCheck"> Remember me </label>
+              </div>
+            </div>
+
+            <div class="col-md-6 d-flex justify-content-center">
+              <!-- Simple link -->
+              <a href="#!">Forgot password?</a>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <button id="login" type="submit" class="btn btn-primary btn-block mb-4">Log in</button>
+
+          <!-- Register buttons -->
+          <div class="text-center">
+            <p>Not a member? <a href="#!">Register</a></p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Register Form -->
+      <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+        <form>
+          <div class="text-center mb-3">
+            <p>Sign up with</p><br>
+            <div class="social-buttons">            
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-google"></i>
+              </button>
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-twitter"></i>
+              </button>
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-facebook-f"></i>
+              </button>
+            </div>
+          </div>
+
+          <p class="text-center">or:</p>
+
+          <!-- Name input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="registerName">Name</label>
+            <input type="text" id="registerName" class="form-control" />
+          </div>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="registerEmail">Email</label>
+            <input type="email" id="registerEmail" class="form-control" />
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="registerPassword">Password</label>
+            <input type="password" id="registerPassword" class="form-control" />
+          </div>
+
+          <!-- Repeat Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+            <input type="password" id="registerRepeatPassword" class="form-control" />
+          </div>
+
+          <!-- Checkbox -->
+          <div class="form-check d-flex justify-content-center mb-4">
+            <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked />
+            <label class="form-check-label" for="registerCheck">
+              I have read and agree to the terms
+            </label>
+          </div>
+
+          <!-- Submit button -->
+          <button id="signin" type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Payment History Container */
+.payment-history-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Heading */
+.payment-history-container h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Payment Form Styling */
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.payment-form label {
+    font-size: 1em;
+    color: #555;
+}
+
+.payment-form input, .payment-form button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+}
+
+.payment-form button {
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.payment-form button:hover {
+    background-color: #45a049;
+}
+
+/* Payment History Table */
+.payment-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.payment-history-table th, .payment-history-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.payment-history-table th {
+    background-color: #4CAF50;
+    color: #fff;
+    font-weight: bold;
+}
+
+.payment-history-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.payment-history-table tr:hover {
+    background-color: #f1f1f1;
+}

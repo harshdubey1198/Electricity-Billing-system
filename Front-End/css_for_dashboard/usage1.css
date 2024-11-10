@@ -1,0 +1,117 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: url("dashboard_background.png") center/cover no-repeat;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container for Usage Information */
+.usage-container {
+    max-width: 700px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.usage-container h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #007bff;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+/* Input Styling */
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="number"],
+input[type="text"] {
+    width: calc(100% - 60px);
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input[type="number"]::placeholder,
+input[type="text"]::placeholder {
+    color: #999;
+}
+
+/* Usage History Table */
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.history-table, .history-table th, .history-table td {
+    border: 1px solid #ddd;
+}
+
+.history-table th, .history-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+.history-table th {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+.history-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.history-table tr:hover {
+    background-color: #e6f7ff;
+}
+
+/* Additional Insights Section */
+.additional-insights {
+    background-color: #f7f9fc;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.additional-insights p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.additional-insights p strong {
+    color: #007bff;
+}

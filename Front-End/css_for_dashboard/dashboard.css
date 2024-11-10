@@ -1,0 +1,211 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    background-color: aquamarine; /* Change this color as needed */
+    font-family: Arial, sans-serif;
+    background: url(dashboard_background.png);    
+}
+
+/* Header and Footer */
+header,
+footer {
+    flex-shrink: 0;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.header-container,
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: #ffffff;
+}
+
+/* Footer Social Icons */
+.footer-right .social-icon {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.footer-right .social-icon i,
+.footer-right .social-icon img {
+    font-size: 30px;
+    color: #3a005a;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.footer-right .social-icon i:hover,
+.footer-right .social-icon img:hover {
+    transform: scale(1.2);
+    color: #ff5656;
+    filter: brightness(1.2);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #6c6afa;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav ul li:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 20%;
+    background-color: #f4f4f4;
+    padding: 1em;
+    position: fixed;
+    top: 55px; /* Adjust this value to ensure it starts below the header */
+    bottom: 0;
+    left: 0;
+    z-index: 1; /* Sidebar is below the header */
+}
+
+/* Sidebar Menu Styling */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Dashboard Content Styling */
+.dashboard-content {
+    margin-left: 20%; /* Align with sidebar width */
+    padding: 80px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Card Styling */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 10px;
+}
+
+.card h2 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 10px;
+}
+
+.card button {
+    padding: 2px 4px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background-color: #45a049;
+}
+
+/* Card Hover Effect */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer Styling */
+.footer {
+    background-color:white;
+    color:black;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 2;
+}
+
+/* Popup Animation */
+@keyframes popup {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+/* Sidebar Item Popup Animation */
+@keyframes sidebar-popup {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(10px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+    animation: sidebar-popup 0.5s ease forwards;
+    opacity: 0; /* Start hidden for animation */
+}
+
+/* Adding delay for each item to create a staggered effect */
+.sidebar ul li:nth-child(1) { animation-delay: 0.1s; }
+.sidebar ul li:nth-child(2) { animation-delay: 0.2s; }
+.sidebar ul li:nth-child(3) { animation-delay: 0.3s; }
+.sidebar ul li:nth-child(4) { animation-delay: 0.4s; }
+.sidebar ul li:nth-child(5) { animation-delay: 0.5s; }
+/* Add more if there are more items */

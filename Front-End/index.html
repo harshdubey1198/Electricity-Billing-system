@@ -2,81 +2,153 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electricity Billing System</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login-Electricity billing system</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="bootstrap-aadi.css">
 </head>
 
 <body>
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Toggle Switch -->
+    <div class="switch-container">
+      <label class="switch">
+        <input type="checkbox" id="toggleSwitch" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
 
-    <!-- Main Hero Section -->
-    <main>
-        <section class="hero">
-            <div class="left-section">
-                <!-- Login Form -->
-                <h2>Login</h2>
-                <form id="loginForm">
-                    <label for="email">Email :</label>
-                    <input type="email" id="email" name="email" required>
+    <!-- Logo Image -->
+    <img id="logo_image" src="./resources/img/Ele_bill_logo.png" alt="Ele-Bill">
 
-                    <label for="password">Password :</label>
-                    <input type="password" id="password" name="password" required>
+    <!-- Pills content -->
+    <div class="tab-content">
+      <!-- Login Form -->
+      <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+        <form>
+          <div class="text-center mb-3">
+            <p>Sign in with</p><br>
+            
+            <div class="social-buttons">
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-google"></i>
+              </button>
 
-                    <button type="submit">Login</button>
-                </form>
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-twitter"></i>
+              </button>
 
-                <!-- Signup Button -->
-                <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-facebook-f"></i>
+              </button>
+            </div>
+          </div>
 
-                <!-- Forget Password Button -->
-                <p>Forget your Password? <a href="password_recovery.html">Recover Now</a></p>
+          <p class="text-center">or:</p>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="loginName">Email or username</label>
+            <input type="email" id="loginName" class="form-control" />
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" class="form-control" />
+          </div>
+
+          <!-- 2 column grid layout -->
+          <div class="row mb-4">
+            <div class="col-md-6 d-flex justify-content-center">
+              <!-- Checkbox -->
+              <div class="form-check mb-3 mb-md-0">
+                <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                <label class="form-check-label" for="loginCheck"> Remember me </label>
+              </div>
             </div>
 
-            <div class="right-section">
-                <h3>Useful Links</h3>
-                <ul>
-                    <li><a href="https://www.youtube.com/watch?v=TKIWmXMjmlE"> >> Saving of energy and go green
-                            promotion</a></li>
-                    <li><a
-                            href="https://www.mpwz.co.in/assets/img/pdf/11_KV_New_Service_Connection_Charges_01.05.2024.pdf">
-                            >> New Service Connection Charges HT on 11 KV</a></li>
-                    <li><a
-                            href="https://www.mpwz.co.in/assets/img/pdf/33_KV_New_Service_Connection_Charges_01.05.2024.pdf">
-                            >> New Service Connection Charges HT on 33 KV</a></li>
-                    <li><a
-                            href="https://www.mpwz.co.in/assets/img/pdf/Urban_LT_New_Service_Connection_Charges_30.04.24.pdf">
-                            >> New Service Connection Charges LT for URBAN Area</a></li>
-                    <li><a
-                            href="https://www.mpwz.co.in/assets/img/pdf/Rural_LT_New_Service_Connection_Charges_30.04.24.pdf">
-                            >> New Service Connection Charges LT for RURAL Area</a></li>
-                </ul>
+            <div class="col-md-6 d-flex justify-content-center">
+              <!-- Simple link -->
+              <a href="#!">Forgot password?</a>
             </div>
-        </section>
-    </main>
+          </div>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <p>&copy; 2024 Electricity Billing System. All Rights Reserved.</p>
-            </div>
-            <div class="footer-right">
-                <a href="https://www.facebook.com/MPEBIndore" target="_blank" class="social-icon">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://x.com/MPEBIndore" target="_blank" class="social-icon">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://www.instagram.com/MPEB_Indore/" target="_blank" class="social-icon">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
+          <!-- Submit button -->
+          <button id="login" type="submit" class="btn btn-primary btn-block mb-4">Log in</button>
 
-    <script type="module" src="js/app.js"></script>
+          <!-- Register buttons -->
+          <div class="text-center">
+            <p>Not a member? <a href="#!">Register</a></p>
+          </div>
+        </form>
+      </div>
 
+      <!-- Register Form -->
+<div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+  <form>
+    <div class="text-center mb-3">
+      <p>Sign up with</p><br>
+      <div class="social-buttons">
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-google"></i>
+        </button>
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-twitter"></i>
+        </button>
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+      </div>
+    </div>
+
+    <p class="text-center">or:</p>
+
+    <!-- First Name input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="registerFirstName">First Name</label>
+      <input type="text" id="registerFirstName" class="form-control" required />
+    </div>
+
+    <!-- Last Name input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="registerLastName">Last Name</label>
+      <input type="text" id="registerLastName" class="form-control" required />
+    </div>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="registerEmail">Email</label>
+      <input type="email" id="registerEmail" class="form-control" required />
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="registerPassword">Password</label>
+      <input type="password" id="registerPassword" class="form-control" required />
+    </div>
+
+    <!-- Checkbox -->
+    <div class="form-check d-flex justify-content-center mb-4">
+      <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked />
+      <label class="form-check-label" for="registerCheck">
+        I agree to the terms and conditions
+      </label>
+    </div>
+
+    <!-- Submit button -->
+  <button id="register" type="button" class="btn btn-primary btn-block mb-3">Register</button>
+  </form>
+</div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
