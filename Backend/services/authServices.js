@@ -58,10 +58,10 @@ const recoverAccountService = async (token, newPassword) => {
     }
 };
 
-const updateCustomerService = async (email, updateData) => {
+const updateCustomerService = async (customerId, updateData) => {
     try {
         const updatedCustomer = await User.findByIdAndUpdate(
-            { email },
+            customerId, // Use _id directly here
             { $set: updateData },
             { new: true, runValidators: true }
         );
@@ -75,5 +75,6 @@ const updateCustomerService = async (email, updateData) => {
         throw new Error(error.message);
     }
 };
+
 
 module.exports = { signupService, loginService, resetPasswordService, recoverAccountService, updateCustomerService };

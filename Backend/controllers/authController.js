@@ -43,13 +43,14 @@ const recoverAccountController = async (req, res) => {
 
 const updateCustomerController = async (req, res) => {
     try {
-        const email = req.params.id;
+        const customerId = req.params.id;
         const updateData = req.body;
-        const updatedCustomer = await authService.updateCustomerService(email, updateData);
+        const updatedCustomer = await authService.updateCustomerService(customerId, updateData);
         res.status(200).json({ message: 'Customer updated successfully', updatedCustomer });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 };
+
 
 module.exports = { signupController, loginController, resetPasswordController, recoverAccountController, updateCustomerController };

@@ -51,7 +51,7 @@ document.getElementById('login').addEventListener('click', function(event) {
       password: password
   };
 
-  fetch('http://localhost:7200/api/auth/login', {
+  fetch('https://electricity-billing-system.onrender.com/api/auth/login', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', 
@@ -96,7 +96,7 @@ document.getElementById("register").addEventListener("click", function (event) {
 
   const registerData = { firstName, lastName, email, password };
 
-  fetch("http://localhost:7200/api/auth/signup", {
+  fetch("https://electricity-billing-system.onrender.com/api/auth/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
