@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ele-Bill - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/Front-End/Bootstrap/dashboard_style.css">
+
+    <style>
+        /* General container styles */
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Profile Overview */
+        .profile-overview {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            /* Using Google Font Great Vibes */
+            font-size: 2.5rem;
+            color: #333;
+            /* Adjust text color */
+        }
+
+        hover-shadow:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .profile-image img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: 18%;
+        }
+
+        .profile-info {
+            flex-grow: 1;
+        }
+
+        .profile-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .profile-info p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .profile-info .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .profile-info .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Account Summary */
+        .account-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .summary-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .summary-item p {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .quick-actions .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .quick-actions .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Notifications */
+        .notifications {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .notifications h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .notifications ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .notifications li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .notifications li i {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        .notifications li a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .notifications li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .profile-overview {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .account-summary {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+            }
+
+            .notifications li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img id="logo_image" src="https://res.cloudinary.com/harshdubey1198/image/upload/v1731250797/Ele_bill_logo_o6rt0y.png" alt="Ele-Bill">
+        <div class="flex-column align-items-center">
+            <a class="w-75" href="/Front-End/Bootstrap/home.html">
+                <button class="w-100 rounded my-2 mt-5">
+                    <i class="fas fa-home"></i> Home
+                </button>
+            </a>
+            <a class="w-75" href="/Front-End/Bootstrap/profile.html">
+                <button class="w-100 rounded my-2">
+                    <i class="fas fa-user"></i> Profile
+                </button>
+            </a>
+            <a class="w-75" href="/Front-End/Bootstrap/payments.html">
+                <button class="w-100 rounded my-2">
+                    <i class="fas fa-credit-card"></i> Payments
+                </button>
+            </a>
+            <a class="w-75" href="/Front-End/Bootstrap/bill.html">
+                <button class="w-100 rounded my-2">
+                    <i class="fas fa-file-invoice"></i> Bills
+                </button>
+            </a>
+            <a class="w-75" href="/Front-End/Bootstrap/setting.html">
+                <button class="w-100 rounded my-2">
+                    <i class="fas fa-cogs"></i> Settings
+                </button>
+            </a>
+            <a class="w-75" href="/Front-End/Bootstrap/login.html">
+                <button class="w-100 rounded my-2">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </a>
+        </div>
+    </div>    
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="header">
+            <h1>Welcome, John Doe!</h1>
+        </div>
+
+        <!-- Profile Overview -->
+        <div class="profile-overview">
+            <div class="profile-image">
+                <img src="/Front-End/Bootstrap/profile_image.jpg" alt="Profile Picture">
+            </div>
+            <div class="profile-info">
+                <h3>John Doe</h3>
+                <p>Email: johndoe@example.com</p>
+                <p>Account Status: Active</p>
+            </div>
+        </div>
+
+        <!-- Account Summary -->
+        <div class="account-summary">
+            <div class="summary-item">
+                <h3>Account Balance</h3>
+                <p>$50</p>
+            </div>
+            <div class="summary-item">
+                <h3>Recent Transactions</h3>
+                <ul>
+                    <li>Payment: $20 on 10/10/2024</li>
+                    <li>Payment: $30 on 09/30/2024</li>
+                </ul>
+            </div>
+            <div class="summary-item">
+                <h3>Upcoming Bill</h3>
+                <p>$30 due in 5 days</p>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <a href="/Front-End/Bootstrap/profile.html" class="btn">Update Profile</a>
+            <a href="/Front-End/Bootstrap/payments.html" class="btn">Payment History</a>
+            <a href="/Front-End/Bootstrap/bill.html" class="btn">View Bills</a>
+        </div>
+
+        <!-- Recent Notifications -->
+        <div class="notifications">
+            <h3>Recent Notifications</h3>
+            <ul>
+                <li><i class="fas fa-bell"></i> Bill due in 5 days. <a href="/Front-End/Bootstrap/bill.html">Pay Now</a></li>
+                <li><i class="fas fa-bell"></i> Profile update required. <a href="/Front-End/Bootstrap/profile.html">Update Profile</a></li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <p>&copy; 2024 Electricity Billing System. All Rights Reserved.</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://www.facebook.com/MPEBIndore" target="_blank" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/MPEBIndore" target="_blank" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/MPEB_Indore/" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="/Front-End/Bootstrap/dashboard_script.js"></script>
+
+</body>
+
+</html>

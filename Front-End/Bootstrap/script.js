@@ -1,32 +1,49 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const toggleSwitch = document.getElementById('toggleSwitch');
-  const loginForm = document.getElementById('pills-login');
-  const registerForm = document.getElementById('pills-register');
-  const switchLabel = document.getElementById('switchLabel');
-  
-  // Initially show the login form
-  loginForm.style.display = 'block';
-  registerForm.style.display = 'none';
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the toggle switch and the tab content elements
+  const toggleSwitch = document.getElementById("toggleSwitch");
+  const loginForm = document.getElementById("pills-login");
+  const registerForm = document.getElementById("pills-register");
 
-  // Listen for changes to the toggle switch
-  toggleSwitch.addEventListener('change', function() {
+  // Function to switch between login and register forms
+  function switchForms() {
     if (toggleSwitch.checked) {
-      // If switch is on, show login form
-      loginForm.style.display = 'block';
-      registerForm.style.display = 'none';
-      switchLabel.innerText = "Login";
+      loginForm.classList.add("show", "active");
+      registerForm.classList.remove("show", "active");
     } else {
-      // If switch is off, show register form
-      registerForm.style.display = 'block';
-      loginForm.style.display = 'none';
-      switchLabel.innerText = "Register";
+      loginForm.classList.remove("show", "active");
+      registerForm.classList.add("show", "active");
     }
+  }
+
+  // Initially load the correct form based on the toggle state
+  switchForms();
+
+  // Event listener for the toggle switch change
+  toggleSwitch.addEventListener("change", switchForms);
+
+  // Event listener for the "Register" link in the login form
+  document.getElementById("registerLink").addEventListener("click", function (e) {
+    e.preventDefault();
+    toggleSwitch.checked = !toggleSwitch.checked; // Toggle the switch
+    toggleSwitch.dispatchEvent(new Event("change")); // Trigger the change event
+  });
+});
+
+// JavaScript to highlight the active tab
+document.addEventListener('DOMContentLoaded', function () {
+  const links = document.querySelectorAll('.sidebar a');
+  links.forEach(link => {
+    link.addEventListener('click', function () {
+      links.forEach(l => l.classList.remove('active')); // Remove active class from all links
+      this.classList.add('active'); // Add active class to clicked link
+    });
   });
 
-  // Ensure initial state of the toggle corresponds to the login form
-  if (!toggleSwitch.checked) {
-    registerForm.style.display = 'block';
-    loginForm.style.display = 'none';
-    switchLabel.innerText = "Register";
-  }
+  // Optionally, add an active class based on the current page
+  const currentPage = window.location.pathname;
+  links.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+      link.classList.add('active');
+    }
+  });
 });

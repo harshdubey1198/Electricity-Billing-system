@@ -1,0 +1,349 @@
+/* General body styling */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row; /* Align content in a row for sidebar and main content */
+  height: 100vh;
+  background-image: url("https://res.cloudinary.com/harshdubey1198/image/upload/v1731250799/electricity_background_fbcyx1.png");
+  background-size: cover;
+}
+
+/* Sidebar styling */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f4f4f4;
+  padding: 20px;
+  height: 100vh;
+  width: 200px;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+#logo_image {
+  height: 50px;
+  margin-top: 25px;
+}
+
+.sidebar h2 {
+  text-align: center;
+}
+
+/* Styling for Sidebar Links */
+.sidebar a {
+  width: 100%;
+}
+
+.sidebar .flex-column {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;
+}
+
+.sidebar .w-75 {
+  width: 100%;
+}
+
+/* Active button highlight */
+.sidebar a.active button {
+  background-color: #007bff; /* Highlight active button */
+  color: white;
+}
+
+/* Sidebar button styling */
+.sidebar button {
+  width: 200px;
+  padding: 15px;
+  border: none;
+  background-color: #dcd8d8;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+  transition: background-color 0.5s, transform 0.3s;
+}
+
+.sidebar button:hover {
+  background-color: #848383;
+  transform: scale(1.05);
+}
+
+/* Active menu button */
+.sidebar a.active button {
+  background-color: #007bff;  /* Highlight color for active menu */
+  color: white;
+}
+
+/* Content styling */
+.content {
+  margin-left: 250px;
+  padding: 20px;
+  flex: 1;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+/* Header styling */
+.header {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  color: black;
+}
+
+/* Footer section */
+.footer {
+  background-color: #d9cdfc;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+  color: black;
+}
+
+/* Footer container styling */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.footer-left {
+  flex: 1;
+  text-align: left;
+}
+
+.footer-right {
+  flex: 1;
+  text-align: right;
+}
+
+.footer-right .social-icon {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.footer-right .social-icon i,
+.footer-right .social-icon img {
+  font-size: 30px;
+  color: #3a005a;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.footer-right .social-icon i:hover,
+.footer-right .social-icon img:hover {
+  transform: scale(1.2);
+  color: #ff5656;
+  filter: brightness(1.2);
+}
+
+/* Connection info and buttons */
+.connection-info {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  padding-left: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 10px 20px;
+}
+
+.connection-info p {
+  margin: 0;
+}
+
+.connection-info strong {
+  display: block;
+  padding: 5px 0;
+  font-weight: bold;
+}
+
+.connection-info input {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  background-color: #f2f2f2;
+  width: 70%;
+}
+
+/* Payment container */
+.payment-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  height: 200px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* Table styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* Button styling */
+button {
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Profile and Settings section styles */
+.card-body {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.text-muted {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Form elements and input styling */
+.row {
+  margin-bottom: 15px;
+}
+
+.col-sm-3 {
+  font-weight: bold;
+  color: #333;
+}
+
+.col-sm-9 {
+  font-size: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="checkbox"] {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  background-color: #f2f2f2;
+  width: 80%;
+  border-radius: 5px;
+}
+
+input[type="checkbox"] {
+  width: auto;
+  margin-top: 0;
+}
+
+/* Toggle switch styling */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+
+/* Form Control Styles */
+.form-control {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+
+/* Button Styles */
+#edit-phone-btn,
+#edit-address-btn {
+  display: inline-block;
+  margin-top: 5px;
+}
+
+#save-phone-btn,
+#save-address-btn {
+  display: none;
+  margin-top: 5px;
+}
+
+button.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+button.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+button.btn-warning {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
