@@ -122,3 +122,72 @@ document.getElementById("register").addEventListener("click", function (event) {
       alert("An error occurred during registration.");
     });
 });
+
+// userprofile
+document.addEventListener("DOMContentLoaded", function () {
+  const userId = "6730407923af6ed86bf9ac3b";  // Replace with dynamic user ID
+  const apiUrl = `${process.env.REACT_APP_URL}/api/user/${userId}`;
+
+  // Fetch user data from API and populate the form
+  axios.get(apiUrl)
+      .then(response => {
+          const user = response.data.user;
+          populateUserData(user);
+      })
+      .catch(error => {
+          console.error('Error fetching user data:', error);
+      });
+});
+
+// Populate user data into the form
+function populateUserData(user) {
+  document.getElementById('firstName').value = user.firstName;
+  document.getElementById('lastName').value = user.lastName;
+  document.getElementById('email').value = user.email;
+  document.getElementById('phoneNumber').value = user.phoneNumber;
+  document.getElementById('dateOfBirth').value = user.dateOfBirth || '';
+  document.getElementById('billingCycle').value = user.billingCycle;
+  document.getElementById('address').value = `${user.address.street}, ${user.address.city}, ${user.address.state}, ${user.address.zipCode}`;
+  // You can add logic to display profile picture if available
+}
+
+// Toggle the edit mode
+function toggleEdit() {
+  const isEditing = document.getElementById('firstName').disabled;
+
+  // Toggle the disabled property of inputs
+  const inputs = document.querySelectorAll('input');
+  inputs.forEach(input => input.disabled = !isEditing);
+
+  // Show/Hide the Edit and Save buttons
+  document.getElementById('editBtn').style.display = isEditing ? 'none' : 'inline-block';
+  document.getElementById('saveBtn').style.display = isEditing ? 'inline-block' : 'none';
+}
+
+// Save the profile data
+function saveProfile() {
+  
+  const userId = JSON.parse(localStorage.getItem('authuser')).user._id; 
+  const apiUrl = `http://localhost:7200/api/auth/user/${userId}`;
+  
+  // Gather updated data
+  const updatedData = {
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      email: document.getElementById('email').value,
+      phoneNumber: document.getElementById('phoneNumber').value,
+      dateOfBirth: document.getElementById('dateOfBirth').value,
+      billingCycle: document.getElementById('billingCycle').value,
+      address: document.getElementById('address').value,
+      // Handle profile picture upload if needed
+  };
+
+  axios.put(apiUrl, updatedData)
+      .then(response => {
+          alert('Profile updated successfully');
+          toggleEdit();  // Switch back to non-editable mode
+      })
+      .catch(error => {
+          console.error('Error saving profile:', error);
+      });
+}
