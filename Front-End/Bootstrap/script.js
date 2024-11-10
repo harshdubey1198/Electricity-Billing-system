@@ -1,32 +1,31 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const toggleSwitch = document.getElementById('toggleSwitch');
-  const loginForm = document.getElementById('pills-login');
-  const registerForm = document.getElementById('pills-register');
-  const switchLabel = document.getElementById('switchLabel');
+    // Get the toggle switch and the tab content elements
+    const toggleSwitch = document.getElementById("toggleSwitch");
+    const loginForm = document.getElementById("pills-login");
+    const registerForm = document.getElementById("pills-register");
   
-  // Initially show the login form
-  loginForm.style.display = 'block';
-  registerForm.style.display = 'none';
-
-  // Listen for changes to the toggle switch
-  toggleSwitch.addEventListener('change', function() {
-    if (toggleSwitch.checked) {
-      // If switch is on, show login form
-      loginForm.style.display = 'block';
-      registerForm.style.display = 'none';
-      switchLabel.innerText = "Login";
-    } else {
-      // If switch is off, show register form
-      registerForm.style.display = 'block';
-      loginForm.style.display = 'none';
-      switchLabel.innerText = "Register";
+    // Function to switch between login and register forms
+    function switchForms() {
+      if (toggleSwitch.checked) {
+        loginForm.classList.add("show", "active");
+        registerForm.classList.remove("show", "active");
+      } else {
+        loginForm.classList.remove("show", "active");
+        registerForm.classList.add("show", "active");
+      }
     }
+  
+    // Initially load the correct form based on the toggle state
+    switchForms();
+  
+    // Event listener for the toggle switch change
+    toggleSwitch.addEventListener("change", switchForms);
+  
+    // Event listener for the "Register" link in the login form
+    document.getElementById("registerLink").addEventListener("click", function (e) {
+      e.preventDefault();
+      toggleSwitch.checked = !toggleSwitch.checked; // Toggle the switch
+      toggleSwitch.dispatchEvent(new Event("change")); // Trigger the change event
+    });
   });
-
-  // Ensure initial state of the toggle corresponds to the login form
-  if (!toggleSwitch.checked) {
-    registerForm.style.display = 'block';
-    loginForm.style.display = 'none';
-    switchLabel.innerText = "Register";
-  }
-});
+  

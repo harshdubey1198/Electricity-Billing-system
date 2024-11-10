@@ -8,208 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <style>
-        /* Add these styles inside <style> tag or in your external CSS file */
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            /* Full viewport height */
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: #ffffff;
-            color: black;
-            height: 100vh;
-            padding-top: 20px;
-            position: fixed;
-        }
-
-        #logo_image {
-            height: 50px;
-            margin-left: 25px;
-            margin-top: 25px;
-        }
-
-        .sidebar h2 {
-            text-align: center;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            padding: 15px;
-            text-align: center;
-        }
-
-        .sidebar ul li a {
-            color: rgb(0, 0, 0);
-            text-decoration: none;
-        }
-
-        .sidebar ul li:hover {
-            background-color: #d9cdfc;
-            color: white;
-            font-size: 25px;
-        }
-
-        .sidebar ul li.active {
-            background-color: #ccbbff;
-            color: white;
-            font-size: 25px;
-        }
-
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-            flex: 1;
-            /* Ensure content grows to take up remaining space */
-            background-image: url("electricity_background.png");
-            background-size: cover;
-            min-height: 100vh;
-        }
-
-        .header {
-            background-color: #d9cdfc;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            color: black;
-        }
-
-        .footer {
-            background-color: #d9cdfc;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin-top: 10px;
-            color: black;
-        }
-
-        /* Footer styling (add this code) */
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            /* Distribute space between the items */
-            align-items: center;
-            /* Vertically align the items */
-            padding: 10px;
-        }
-
-        .footer-left {
-            flex: 1;
-            /* This will take up available space on the left */
-            text-align: left;
-        }
-
-        .footer-right {
-            flex: 1;
-            /* This will take up available space on the right */
-            text-align: right;
-        }
-
-        .footer-right .social-icon {
-            display: inline-block;
-            margin-right: 15px;
-        }
-
-        .footer-right .social-icon i,
-        .footer-right .social-icon img {
-            font-size: 30px;
-            color: #3a005a;
-            transition: transform 0.3s, color 0.3s;
-        }
-
-        .footer-right .social-icon i:hover,
-        .footer-right .social-icon img:hover {
-            transform: scale(1.2);
-            color: #ff5656;
-            filter: brightness(1.2);
-        }
-
-        .connection-info {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            padding-left: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 10px 20px;
-        }
-
-        .connection-info p {
-            margin: 0;
-        }
-
-        .connection-info strong {
-            display: block;
-            padding: 5px 0;
-            font-weight: bold;
-        }
-
-        .connection-info input {
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            background-color: #f2f2f2;
-            width: 70%;
-        }
-
-        .payment-container {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            height: 200px;
-            overflow-y: scroll;
-            overflow-x: hidden;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        .button-group {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .connection-info {
-            margin-bottom: 20px;
-        }
-
-        .connection-info p {
-            margin: 5px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="/dashboard_style.css">
 </head>
 
 <body>
@@ -217,11 +16,12 @@
     <div class="sidebar">
         <img id="logo_image" src="Ele_bill_logo.png" alt="Ele-Bill">
         <ul>
-            <li><a href="/home.html">Home</a></li>
-            <li><a href="/profile.html">Profile</a></li>
-            <li><a href="/payments.html">Payments</a></li>
-            <li><a href="/settings.html">Settings</a></li>
-            <li><a href="/logout.html">Logout</a></li>
+            <li><a href="/home.html"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a href="/profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
+            <li><a href="/payments.html"><i class="fas fa-wallet"></i><span>Payments</span></a></li>
+            <li><a href="/bill.html"><i class="fas fa-receipt"></i><span>Pay Bills</span></a></li>
+            <li><a href="/setting.html"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+            <li><a href="/logout.html"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
         </ul>
     </div>
 
@@ -357,33 +157,8 @@
 
     </div>
 
-    <script>
-        // Add event listeners to buttons (optional, depending on your functionality)
-        document.querySelectorAll('.button-group button').forEach(button => {
-            button.addEventListener('click', () => {
-                // Handle button clicks here (e.g., show graphs, redirect to other pages)
-                console.log(button.textContent + ' clicked');
-            });
-        });
+    <script src="/dashboard_script.js"></script>
 
-        // Get the current URL path (without leading '/')
-        const currentPath = window.location.pathname.replace('/', '');
-
-        // Select all sidebar menu links
-        const menuItems = document.querySelectorAll('.sidebar ul li a');
-
-        // Loop through the links and add 'active' class to the one that matches the current URL
-        menuItems.forEach((menuItem) => {
-            // Get the filename from the href (e.g., 'payments.html')
-            const hrefPath = menuItem.getAttribute('href').replace('/', '');
-
-            // Check if the href path exactly matches the current page path
-            if (hrefPath === currentPath) {
-                menuItem.parentElement.classList.add('active');
-            }
-        });
-
-    </script>
 </body>
 
 </html>

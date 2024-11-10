@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ele-Bill</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/dashboard_style.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <img id="logo_image" src="/Ele_bill_logo.png" alt="Ele-Bill">
+        <ul>
+            <li><a href="/home.html"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a href="/profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
+            <li><a href="/payments.html"><i class="fas fa-wallet"></i><span>Payments</span></a></li>
+            <li><a href="/bill.html"><i class="fas fa-receipt"></i><span>Pay Bills</span></a></li>
+            <li><a href="/setting.html"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+            <li><a href="/logout.html"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="header">
+            <h1>Settings</h1>
+        </div>
+
+        <!-- Profile Settings -->
+        <div class="card-body">
+            <h5 class="card-title">Profile Settings</h5>
+            <p class="text-muted">Update your personal details</p>
+
+            <div class="row">
+                <div class="col-sm-3 text-muted">Profile Picture</div>
+                <div class="col-sm-9">
+                    <!-- Text field showing current profile picture file name -->
+                    <input type="text" id="profile-picture-text" value="profile_picture.jpg" disabled
+                        class="form-control">
+                    <!-- File input (hidden initially) -->
+                    <input type="file" id="profile-picture-input" accept="image/*" style="display: none;"
+                        onchange="updateFileName()"><br>
+                    <!-- Button to edit or save -->
+                    <button class="btn btn-primary" id="edit-profile-btn" onclick="editProfile()">Edit</button>
+                    <button class="btn btn-success" id="save-profile-btn" style="display:none;"
+                        onclick="saveProfile()">Save</button>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-sm-3 text-muted">Account Holder Name</div>
+                <div class="col-sm-9" id="account-holder-name">Rishika Verma</div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-sm-3 text-muted">Email</div>
+                <div class="col-sm-9" id="email">rishika.verma@email.com</div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-sm-3 text-muted">Phone Number</div>
+                <div class="col-sm-6" id="phone-number">
+                    <span id="phone-text">+91 9876543210</span>
+                    <input type="text" id="phone-input" value="+91 9876543210" style="display:none;"
+                        class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-primary mt-3" id="edit-phone-btn" onclick="editPhone()">Edit</button>
+                    <button class="btn btn-success mt-3" id="save-phone-btn" style="display:none;"
+                        onclick="savePhone()">Save</button>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-sm-3 text-muted">Address</div>
+                <div class="col-sm-6" id="address">
+                    <span id="address-text">123, Main Street, Ujjain</span>
+                    <input type="text" id="address-input" value="123, Main Street, Ujjain" style="display:none;"
+                        class="form-control">
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-primary mt-3" id="edit-address-btn" onclick="editAddress()">Edit</button>
+                    <button class="btn btn-success mt-3" id="save-address-btn" style="display:none;"
+                        onclick="saveAddress()">Save</button>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <!-- Password and Security -->
+        <div class="card-body">
+            <h5 class="card-title">Password and Security</h5>
+
+            <div class="row">
+                <div class="col-sm-3 text-muted">Change Password</div>
+                <div class="col-sm-9">
+                    <a href="change-password.html">
+                        <button class="btn btn-warning" id="change-password-btn">Change Password</button>
+                    </a>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="card-body">
+            <h5 class="card-title">Notification Settings</h5>
+
+            <div class="row">
+                <div class="col-sm-3 text-muted">Bill Reminder</div>
+                <div class="col-sm-9">
+                    <label class="switch">
+                        <input type="checkbox" id="bill-reminder" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-sm-3 text-muted">Usage Alerts</div>
+                <div class="col-sm-9">
+                    <label class="switch">
+                        <input type="checkbox" id="usage-alerts" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-sm-3 text-muted">Promotional Notifications</div>
+                <div class="col-sm-9">
+                    <label class="switch">
+                        <input type="checkbox" id="promotional-notifications" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn btn-primary mt-3" id="save-notifications-btn">Save</button>
+        </div>
+
+        <!-- Help and Support -->
+        <div class="card-body">
+            <h5 class="card-title">Help and Support</h5>
+
+            <div class="row">
+                <div class="col-sm-3 text-muted">Customer Support</div>
+                <div class="col-sm-9">
+                    <button class="btn btn-danger" id="contact-support-btn">Contact Support</button>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-sm-3 text-muted">FAQ</div>
+                <div class="col-sm-9">
+                    <a href="/faq.html" class="btn btn-link" id="faq-btn">Go to FAQ</a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-sm-3 text-muted">Billing Disputes</div>
+                <div class="col-sm-9">
+                    <button class="btn btn-danger" id="file-dispute-btn">File a Dispute</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/dashboard_script.js"></script>
+
+    <script>
+        function updateFileName() {
+            const input = document.getElementById('profile-picture-input');
+            const fileNameDisplay = document.getElementById('profile-picture-text');
+
+            if (input.files && input.files.length > 0) {
+                fileNameDisplay.value = input.files[0].name;
+            }
+        }
+
+        function editProfile() {
+            // Show the file input and make text field clickable
+            document.getElementById('profile-picture-input').style.display = 'block';
+            document.getElementById('profile-picture-text').disabled = false;
+            document.getElementById('edit-profile-btn').style.display = 'none';
+            document.getElementById('save-profile-btn').style.display = 'block';
+        }
+
+        function saveProfile() {
+            // Hide the file input and disable the text field
+            const input = document.getElementById('profile-picture-input');
+            document.getElementById('profile-picture-input').style.display = 'none';
+            document.getElementById('profile-picture-text').disabled = true;
+            document.getElementById('edit-profile-btn').style.display = 'block';
+            document.getElementById('save-profile-btn').style.display = 'none';
+
+            // Logic to upload the new profile picture to the server can be added here
+        }
+    </script>
+
+</body>
+
+</html>
