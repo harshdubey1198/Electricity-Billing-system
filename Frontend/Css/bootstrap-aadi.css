@@ -25,11 +25,34 @@ body {
   position: relative;
   max-width: 500px;
   width: 100%;
-  /* Make sure it doesn't exceed the max-width */
   padding: 20px;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  min-height: auto; /* Allow container height to adjust based on content */
+  overflow: hidden;
+}
+
+/* Make the login form container stretch based on content */
+#login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align the items at the top */
+  height: auto; /* Let the form's height grow with content */
+}
+
+/* Ensure the registration form grows based on its content */
+#register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: auto; /* Let the form's height grow with content */
+  max-height: none; /* Remove any height restrictions */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  padding-right: 10px; /* Add padding to avoid content getting cut off */
+  margin-top: 20px; /* Add space at the top */
 }
 
 /* Style for the switch */
@@ -319,28 +342,13 @@ a:hover {
 }
 
 .mb-3 {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .mb-4 {
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 0.875rem;
-}
-
-footer p {
-  margin-bottom: 8px;
-}
-
-footer a {
-  color: #007bff;
-}
-
-footer a:hover {
-  text-decoration: underline;
+.mt-2 {
+  margin-top: 1rem;
 }

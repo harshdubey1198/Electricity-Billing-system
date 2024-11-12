@@ -4,7 +4,8 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: row; /* Align content in a row for sidebar and main content */
+  flex-direction: row;
+  /* Align content in a row for sidebar and main content */
   height: 100vh;
   background-image: url("https://res.cloudinary.com/harshdubey1198/image/upload/v1731250799/electricity_background_fbcyx1.png");
   background-size: cover;
@@ -38,11 +39,13 @@ body {
 .sidebar a {
   width: 100%;
   margin-top: 10px;
+  text-decoration: none;
 }
 
 .sidebar .flex-column {
   display: flex;
-  flex-direction: column; /* Stack items vertically */
+  flex-direction: column;
+  /* Stack items vertically */
   align-items: center;
 }
 
@@ -51,11 +54,6 @@ body {
 }
 
 /* Active button highlight */
-/* Active link highlight for the <a> tag */
-.sidebar a.active {
-  background-color: #007bff;
-  color: white;
-}
 
 .sidebar button:hover {
   background-color: #848383;
@@ -74,13 +72,19 @@ body {
   text-align: center;
   border-radius: 5px;
   transition: background-color 0.5s, transform 0.3s;
+  text-decoration: none;
 }
 
 /* Active menu button */
 .sidebar a.active button {
-  background-color: #007bff;  /* Highlight color for active menu */
+  background-color: #007bff;
   color: white;
 }
+
+.sidebar a.active {
+  background-color: transparent;
+}
+
 
 /* Content styling */
 .content {
@@ -307,11 +311,11 @@ input[type="checkbox"] {
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: #4CAF50;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   transform: translateX(14px);
 }
 
@@ -349,4 +353,125 @@ button.btn-success {
 button.btn-warning {
   background-color: #ffc107;
   border-color: #ffc107;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+
+  /* Collapse sidebar */
+  .sidebar {
+    width: 60px;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Center the logo */
+  #logo_image {
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    transition: all 0.3s ease;
+  }
+
+  /* Center the sidebar items and make them circular */
+  .sidebar button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+  }
+
+  .sidebar button a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Change icon size */
+  .sidebar button i {
+    font-size: 20px;
+  }
+
+  /* Hide the text for the sidebar buttons */
+  .sidebar a span {
+    display: none;
+  }
+
+  /* Collapsed content area to adjust based on the collapsed sidebar */
+  .content {
+    margin-left: 60px;
+    padding: 10px;
+  }
+
+  /* Adjust the header section for mobile */
+  .header {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+
+  /* Connection Info Section */
+  .connection-info {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .connection-info input {
+    width: 100%;
+  }
+
+  /* Payment container height for smaller screens */
+  .payment-container {
+    height: 150px;
+  }
+
+  /* Hide menu item names on the sidebar */
+  .sidebar a span {
+    display: none;
+  }
+
+  /* Quick actions buttons */
+  .quick-actions .btn {
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .quick-actions .btn:hover {
+    background-color: #0056b3;
+    /* Darker shade on hover */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add subtle shadow on hover */
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    text-align: center;
+  }
+
+  .footer-right .social-icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 }

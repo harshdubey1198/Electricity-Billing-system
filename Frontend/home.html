@@ -160,27 +160,6 @@
         .notifications li a:hover {
             text-decoration: underline;
         }
-
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-            .profile-overview {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .account-summary {
-                grid-template-columns: 1fr;
-            }
-
-            .quick-actions {
-                flex-direction: column;
-            }
-
-            .notifications li {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
     </style>
 </head>
 
@@ -194,32 +173,32 @@
         <div class="flex-column align-items-center">
             <a class="w-75" href="home.html">
                 <button class="w-100 rounded my-2 mt-5">
-                    <i class="fas fa-home"></i> Home
+                    <i class="fas fa-home"></i> <span>Home</span>
                 </button>
             </a>
             <a class="w-75" href="profile.html">
                 <button class="w-100 rounded my-2">
-                    <i class="fas fa-user"></i> Profile
+                    <i class="fas fa-user"></i> <span>Profile</span>
                 </button>
             </a>
             <a class="w-75" href="payments.html">
                 <button class="w-100 rounded my-2">
-                    <i class="fas fa-credit-card"></i> Payments
+                    <i class="fas fa-credit-card"></i> <span>Payments</span>
                 </button>
             </a>
             <a class="w-75" href="bill.html">
                 <button class="w-100 rounded my-2">
-                    <i class="fas fa-file-invoice"></i> Bills
+                    <i class="fas fa-file-invoice"></i> <span>Bills</span>
                 </button>
             </a>
             <a class="w-75" href="setting.html">
                 <button class="w-100 rounded my-2">
-                    <i class="fas fa-cogs"></i> Settings
+                    <i class="fas fa-cogs"></i> <span>Settings</span>
                 </button>
             </a>
             <a class="w-75" href="javascript:void(0);">
                 <button id="logout-btn" class="w-100 rounded my-2">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
                 </button>
             </a>
         </div>
@@ -234,7 +213,8 @@
         <!-- Profile Overview -->
         <div class="profile-overview">
             <div class="profile-image">
-                <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg" alt="Profile Picture">
+                <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg"
+                    alt="Profile Picture">
             </div>
             <div class="profile-info">
                 <h3>John Doe</h3>

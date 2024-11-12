@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             case 'payments':
                 // Payments page data population
+                document.querySelector('.connection-info p:nth-child(3) input').value = `${user.firstName} ${user.lastName}`;
                 // Add logic to display payment data (this would depend on your app's logic)
                 break;
 

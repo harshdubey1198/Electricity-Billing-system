@@ -128,19 +128,20 @@ document.getElementById("register").addEventListener("click", function (event) {
   const lastName = document.getElementById("registerLastName").value;
   const email = document.getElementById("registerEmail").value;
   const password = document.getElementById("registerPassword").value;
+  const dob = document.getElementById("registerDOB").value;
 
-  if (!firstName || !lastName || !email || !password) {
+  if (!firstName || !lastName || !email || !password || !dob) {
     alert("All fields are required.");
     return;
   }
 
-  const registerData = { firstName, lastName, email, password };
+  const registerData = { firstName, lastName, email, password, dob };
 
   sendApiRequest("https://electricity-billing-system.onrender.com/api/auth/signup", "POST", registerData)
     .then(data => {
       alert("Registration successful!");
       localStorage.setItem('authuser', JSON.stringify(data));
-      window.location.href = 'userprofile.html';
+      window.location.href = 'index.html';
     })
     .catch(error => {
       alert("An error occurred during registration.");
