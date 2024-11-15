@@ -25,55 +25,55 @@ body {
   position: relative;
   max-width: 500px;
   width: 100%;
+  height: 600px;
+  margin-top: 50px;
   padding: 20px;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  min-height: auto; /* Allow container height to adjust based on content */
-  overflow: hidden;
+  overflow: scroll;
 }
 
-/* Make the login form container stretch based on content */
+/* Form styles */
+/* Styling for Login Form */
 #login-form {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Align the items at the top */
-  height: auto; /* Let the form's height grow with content */
+  justify-content: flex-start;
+  height: auto;  /* Keep auto height for login form */
+  margin-top: 20px;
 }
 
-/* Ensure the registration form grows based on its content */
+/* Styling for Register Form */
 #register-form {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: auto; /* Let the form's height grow with content */
-  max-height: none; /* Remove any height restrictions */
-  overflow-y: auto; /* Enable vertical scrolling if content overflows */
-  padding-right: 10px; /* Add padding to avoid content getting cut off */
-  margin-top: 20px; /* Add space at the top */
+  height: 250px;  /* Reduce height further (adjust as needed) */
+  margin-top: 50px;
+  overflow-y: auto;  /* Enable vertical scrolling */
+  padding-right: 10px; 
 }
 
-/* Style for the switch */
-/* Container for the switch - Position it above the labels */
+/* Switch container */
 .switch-container {
-  position: absolute; /* Make it absolutely positioned relative to the parent */
-  top: 10px; /* Distance from the top */
-  right: 10px; /* Distance from the right */
+  position: absolute;
+  top: 10px;
+  right: 10px;
   display: flex;
-  flex-direction: column; /* Stack the switch and labels vertically */
+  flex-direction: column;
   align-items: center;
   width: 120px;
-  margin: 0;
 }
 
-/* Style for the switch itself - Make it smaller */
+/* Switch styles */
 .switch {
   position: relative;
   display: inline-block;
-  width: 50px; /* Reduced width */
-  height: 25px; /* Reduced height */
+  width: 50px;
+  height: 25px;
 }
 
 .switch input {
@@ -97,8 +97,8 @@ body {
 .slider:before {
   position: absolute;
   content: "";
-  height: 20px; /* Smaller slider */
-  width: 20px; /* Smaller slider */
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   left: 4px;
   bottom: 2px;
@@ -106,120 +106,93 @@ body {
   transition: 0.4s;
 }
 
-/* When the checkbox is checked, move the slider to the right */
 input:checked + .slider {
   background-color: #4CAF50;
 }
 
 input:checked + .slider:before {
-  transform: translateX(25px); /* Adjust the distance for the smaller switch */
+  transform: translateX(25px);
 }
 
-/* Style for the labels */
+/* Switch labels */
 .switch-labels {
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin-top: 10px;
-  font-size: 14px; /* Smaller text */
+  font-size: 14px;
 }
 
-/* Labels for Login and Register */
 .switch-labels span {
-  font-size: 14px; /* Smaller text */
   transition: opacity 0.3s, color 0.3s, font-weight 0.3s;
   margin-right: 7px;
 }
 
-.switch-labels .login-label {
+.switch-labels .login-label,
+.switch-labels .register-label {
   color: #ccc;
   opacity: 0.7;
 }
 
-.switch-labels .register-label {
-  color: #ccc;
-  opacity: 0.7; /* Make the inactive label slightly transparent */
-}
-
-/* Darken Login label when login form is shown */
-input:checked ~ .switch-labels .login-label {
-  color: #333;
-  font-weight: bold;
-  opacity: 1; /* Active state */
-}
-
-/* Fade out Register label when login form is shown */
-input:checked ~ .switch-labels .register-label {
-  color: #ccc;
-  opacity: 0.7; /* Inactive state */
-}
-
-/* Darken Register label when register form is shown */
+input:checked ~ .switch-labels .login-label,
 input:not(:checked) ~ .switch-labels .register-label {
   color: #333;
   font-weight: bold;
-  opacity: 1; /* Active state */
+  opacity: 1;
 }
 
-/* Fade out Login label when register form is shown */
+input:checked ~ .switch-labels .register-label,
 input:not(:checked) ~ .switch-labels .login-label {
-  color: #ccc;
-  opacity: 0.7; /* Inactive state */
+  opacity: 0.7;
 }
 
-/* Style the input group container */
+/* Input fields */
 .input-group {
   position: relative;
 }
 
-/* Space for the eye icon in the input fields */
 .form-control {
   padding-right: 30px;
-  /* Space for the eye icon */
 }
 
-/* Style the toggle button for the eye icon */
 #togglePassword,
 #toggleRegisterPassword {
   position: absolute;
   right: 10px;
-  /* Position it on the right side of the input */
   top: 50%;
-  /* Vertically center the icon */
   transform: translateY(-50%);
-  /* Adjust position to exactly center */
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
 }
 
-/* Style the eye icon */
 #togglePassword i,
 #toggleRegisterPassword i {
   font-size: 1.2rem;
-  /* Adjust the size of the icon */
   color: #aaa;
-  /* Default icon color */
   transition: color 0.3s ease;
-  /* Smooth color change on hover */
 }
 
-/* Change icon color on hover */
 #togglePassword:hover i,
 #toggleRegisterPassword:hover i {
   color: #333;
-  /* Darker color when hovering */
 }
 
 /* Centering the logo */
 #logo_image {
   display: block;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 20px;
   max-width: 100px;
 }
 
-/* Styling social buttons */
+/* Updated Social buttons */
+.social-buttons {
+  display: flex;
+  justify-content: center; /* Center align icons horizontally */
+  gap: 10px; /* Add spacing between icons */
+}
+
 .social-buttons .btn {
   display: inline-block;
   width: 50px;
@@ -228,32 +201,18 @@ input:not(:checked) ~ .switch-labels .login-label {
   border-radius: 50%;
   background-color: #f1f1f1;
   font-size: 1.5rem;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s;
-}
-
-.social-buttons .btn .fab {
-  font-size: 1.5rem;
-  color: #333;
-}
-
-.social-buttons .btn:hover {
-  background-color: #ddd;
-}
-
-/* Ensuring uniform button sizes */
-.btn-floating {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.3s;
+  text-decoration: none;
 }
 
-.btn-floating .fab {
+.social-buttons .btn:hover {
+  background-color: #ac9cd2;
+}
+
+.social-buttons .fab {
   font-size: 1.5rem;
   color: inherit;
 }
@@ -265,7 +224,6 @@ input:not(:checked) ~ .switch-labels .login-label {
 
 .form-outline .form-label {
   font-weight: 600;
-  display: block;
   margin-bottom: 8px;
 }
 
@@ -283,7 +241,7 @@ input:not(:checked) ~ .switch-labels .login-label {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
 }
 
-/* Form checkboxes and links */
+/* Checkboxes and links */
 .form-check-label {
   margin-left: 8px;
 }
@@ -291,6 +249,7 @@ input:not(:checked) ~ .switch-labels .login-label {
 .form-check {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .form-check input {
@@ -308,7 +267,6 @@ a:hover {
 
 /* Submit button */
 .btn-block {
-  display: block;
   width: 100%;
   padding: 10px;
   font-size: 1rem;

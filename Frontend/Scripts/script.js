@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const loginLabel = document.querySelector('.login-label');
   const registerLabel = document.querySelector('.register-label');
 
+
   // Function to switch between login and register forms
   function switchForms() {
     if (toggleSwitch.checked) {
@@ -122,32 +123,73 @@ document.getElementById('login').addEventListener('click', function (event) {
 
 // Register logic
 document.getElementById("register").addEventListener("click", function (event) {
-  event.preventDefault();
+  event.preventDefault();  // Prevent form submission to perform validation
 
+  // Get the form values
+  const email = document.getElementById("registerEmail").value;
+  const dob = document.getElementById("registerDOB").value;
   const firstName = document.getElementById("registerFirstName").value;
   const lastName = document.getElementById("registerLastName").value;
-  const email = document.getElementById("registerEmail").value;
   const password = document.getElementById("registerPassword").value;
-  const dob = document.getElementById("registerDOB").value;
+  const isChecked = document.getElementById("registerCheck").checked;
 
-  if (!firstName || !lastName || !email || !password || !dob) {
-    alert("All fields are required.");
-    return;
+  let errorMessage = "";
+
+  // Email Validation (Regex for basic email format)
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailRegex.test(email)) {
+    errorMessage += "Please enter a valid email address.\n";
+  }
+
+  // Age Validation: Check if age is 18 or more
+  const userAge = calculateAge(dob);
+  if (userAge < 18) {
+    errorMessage += "You must be at least 18 years old to register.\n";
+  }
+
+  // Check if first and last name are filled
+  if (!firstName || !lastName) {
+    errorMessage += "Please fill in both your first and last names.\n";
+  }
+
+  if (!dob) {
+    errorMessage += "Please enter your date of birth.\n";
+  }
+
+  if (!isChecked) {
+    errorMessage += "You must agree to the terms and conditions.\n";
   }
 
   const registerData = { firstName, lastName, email, password, dob };
 
-  sendApiRequest("https://electricity-billing-system.onrender.com/api/auth/signup", "POST", registerData)
-    .then(data => {
-      alert("Registration successful!");
-      localStorage.setItem('authuser', JSON.stringify(data));
-      window.location.href = 'index.html';
-    })
-    .catch(error => {
-      alert("An error occurred during registration.");
-      console.error("Registration error:", error);
-    });
+  // Display error message if any validation fails
+  if (errorMessage) {
+    alert(errorMessage);
+  } else {
+    sendApiRequest("https://electricity-billing-system.onrender.com/api/auth/signup", "POST", registerData)
+      .then(data => {
+        alert("Registration successful!");
+        localStorage.setItem('authuser', JSON.stringify(data));
+        window.location.href = 'index.html';
+      })
+      .catch(error => {
+        alert("An error occurred during registration.");
+        console.error("Registration error:", error);
+      });
+  }
 });
+
+// Function to calculate the age from the date of birth
+function calculateAge(dob) {
+  const birthDate = new Date(dob);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDifference = today.getMonth() - birthDate.getMonth();
+  if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
 
 // Populate user data into the form
 function populateUserData(user) {
