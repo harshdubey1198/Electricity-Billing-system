@@ -102,7 +102,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
 
             case 'profile':
-                //Profile page data population
+                // Profile page data population
+                document.querySelector('#firstName').value = user.firstName || '';  // Dynamically set the first name
+                document.querySelector('#lastName').value = user.lastName || '';   // Dynamically set the last name
+                document.querySelector('#email').value = user.email || '';         // Dynamically set the email
+
+                // If you have the profile picture URL stored, update it
+                if (user.profilePicture) {
+                    document.querySelector('.profile-image img').src = user.profilePicture;
+                }
+
+                // Display phone number and address
+                document.getElementById('phone-text').textContent = user.phoneNumber;
+                document.getElementById('address-text').textContent = user.address;
+
+                // Add billing cycle information if present
+                if (user.billingCycle) {
+                    document.querySelector('.profile-info').insertAdjacentHTML('beforeend', `
+                        <p>Billing Cycle: ${user.billingCycle}</p>
+                    `);
+                }
                 break;
 
             case 'setting':

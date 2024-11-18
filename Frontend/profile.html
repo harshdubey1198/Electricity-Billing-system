@@ -208,7 +208,7 @@
                     <button id="editPhoneNumber">Edit</button>
                 </div>
                 <div class="info-item">
-                    <input type="email" id="emailAddress" readonly placeholder="email address">
+                    <input type="email" id="email" readonly placeholder="email address">
                     <button id="editEmailAddress">Edit</button>
                 </div>
             </section>
@@ -235,83 +235,6 @@
     </div>
 
     <script src="./Scripts/dashboard_script.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Preload the user data (assumed to be available from the backend or local storage)
-            const userData = {
-                firstName: "Aditya",
-                lastName: "Aerpule",
-                email: "aaerpule@gmail.com",
-                phoneNumber: "",
-                address: {
-                    street: "",
-                    city: "",
-                    state: "",
-                    zipCode: ""
-                },
-                profilePicture: "" // Assume the profile picture URL or path is available
-            };
-
-            // Initialize the profile with the existing data
-            document.getElementById('firstName').value = userData.firstName;
-            document.getElementById('lastName').value = userData.lastName;
-            document.getElementById('emailAddress').value = userData.email;
-            document.getElementById('phoneNumber').value = userData.phoneNumber;
-            document.getElementById('street').value = userData.address.street || '';
-            document.getElementById('city').value = userData.address.city || '';
-            document.getElementById('state').value = userData.address.state || '';
-            document.getElementById('zipCode').value = userData.address.zipCode || '';
-
-            // Event listeners for edit/save buttons (update functionality)
-            document.getElementById('editFirstName').addEventListener('click', toggleEdit.bind(null, 'firstName'));
-            document.getElementById('editLastName').addEventListener('click', toggleEdit.bind(null, 'lastName'));
-            document.getElementById('editStreet').addEventListener('click', toggleEdit.bind(null, 'street'));
-            document.getElementById('editCity').addEventListener('click', toggleEdit.bind(null, 'city'));
-            document.getElementById('editState').addEventListener('click', toggleEdit.bind(null, 'state'));
-            document.getElementById('editZipCode').addEventListener('click', toggleEdit.bind(null, 'zipCode'));
-            document.getElementById('editPhoneNumber').addEventListener('click', toggleEdit.bind(null, 'phoneNumber'));
-            document.getElementById('editEmailAddress').addEventListener('click', toggleEdit.bind(null, 'emailAddress'));
-
-            // Profile picture edit functionality
-            document.getElementById('editProfilePicture').addEventListener('click', function () {
-                document.getElementById('profilePictureInput').click();
-            });
-
-            document.getElementById('profilePictureInput').addEventListener('change', function (e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function (event) {
-                        document.getElementById('profilePicture').src = event.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-
-            // Toggle edit/save functionality
-            function toggleEdit(field) {
-                const input = document.getElementById(field);
-                const button = document.getElementById('edit' + capitalizeFirstLetter(field));
-
-                if (input.readOnly) {
-                    input.readOnly = false;
-                    button.textContent = 'Save';
-                    button.style.backgroundColor = '#28a745'; // Save button
-                } else {
-                    input.readOnly = true;
-                    button.textContent = 'Edit';
-                    button.style.backgroundColor = '#007bff'; // Edit button
-                    userData[field] = input.value; // Update the field data
-                }
-            }
-
-            // Helper function to capitalize first letter
-            function capitalizeFirstLetter(string) {
-                return string.charAt(0).toUpperCase() + string.slice(1);
-            }
-        });
-    </script>
 
 </body>
 
