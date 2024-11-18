@@ -8,13 +8,91 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./Css/dashboard_style.css">
+    <style>
+        .card-body {
+            background-color: rgba(255, 255, 255, 0.7);
+            /* Translucent white background */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            /* Rounded corners */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow for the card */
+            margin-right: 10%;
+            margin-left: 10%;
+        }
+
+        .card-body h5.card-title {
+            font-size: 1.25em;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .card-body .row {
+            margin-bottom: 10px;
+        }
+
+        .card-body .row .col-sm-3 {
+            font-weight: 500;
+            color: #6c757d;
+            /* Subtle text color */
+        }
+
+        .card-body .row .col-sm-9 {
+            font-size: 1em;
+        }
+
+        .card-body .btn {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background-color 0.3s;
+        }
+
+        .card-body .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .card-body .switch input {
+            margin-right: 10px;
+        }
+
+        .card-body .switch span.slider {
+            border-radius: 25px;
+            width: 34px;
+            height: 20px;
+            background-color: #ccc;
+        }
+
+        .card-body .switch input:checked+.slider {
+            background-color: #007bff;
+        }
+
+        .card-body .switch .slider:before {
+            border-radius: 50%;
+            content: "";
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 14px;
+            height: 14px;
+            background-color: white;
+            transition: 0.4s;
+        }
+
+        .card-body .switch input:checked+.slider:before {
+            transform: translateX(14px);
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <img id="logo_image" src="https://res.cloudinary.com/harshdubey1198/image/upload/v1731250797/Ele_bill_logo_o6rt0y.png" alt="Ele-Bill">
+        <img id="logo_image"
+            src="https://res.cloudinary.com/harshdubey1198/image/upload/v1731250797/Ele_bill_logo_o6rt0y.png"
+            alt="Ele-Bill">
         <div class="flex-column align-items-center">
             <a class="w-75" href="home.html">
                 <button class="w-100 rounded my-2 mt-5">
@@ -47,76 +125,11 @@
                 </button>
             </a>
         </div>
-    </div>   
+    </div>
 
     <div class="content">
         <div class="header">
             <h1>Settings</h1>
-        </div>
-
-        <!-- Profile Settings -->
-        <div class="card-body">
-            <h5 class="card-title">Profile Settings</h5>
-            <p class="text-muted">Update your personal details</p>
-
-            <div class="row">
-                <div class="col-sm-3 text-muted">Profile Picture</div>
-                <div class="col-sm-9">
-                    <!-- Text field showing current profile picture file name -->
-                    <input type="text" id="profile-picture-text" value="profile_picture.jpg" disabled
-                        class="form-control">
-                    <!-- File input (hidden initially) -->
-                    <input type="file" id="profile-picture-input" accept="image/*" style="display: none;"
-                        onchange="updateFileName()"><br>
-                    <!-- Button to edit or save -->
-                    <button class="btn btn-primary" id="edit-profile-btn" onclick="editProfile()">Edit</button>
-                    <button class="btn btn-success" id="save-profile-btn" style="display:none;"
-                        onclick="saveProfile()">Save</button>
-                </div>
-            </div>
-            <hr>
-
-            <div class="row">
-                <div class="col-sm-3 text-muted">Account Holder Name</div>
-                <div class="col-sm-9" id="account-holder-name">Rishika Verma</div>
-            </div>
-            <hr>
-
-            <div class="row">
-                <div class="col-sm-3 text-muted">Email</div>
-                <div class="col-sm-9" id="email">rishika.verma@email.com</div>
-            </div>
-            <hr>
-
-            <div class="row">
-                <div class="col-sm-3 text-muted">Phone Number</div>
-                <div class="col-sm-6" id="phone-number">
-                    <span id="phone-text">+91 9876543210</span>
-                    <input type="text" id="phone-input" value="+91 9876543210" style="display:none;"
-                        class="form-control">
-                </div>
-                <div class="col-sm-3">
-                    <button class="btn btn-primary mt-3" id="edit-phone-btn" onclick="editPhone()">Edit</button>
-                    <button class="btn btn-success mt-3" id="save-phone-btn" style="display:none;"
-                        onclick="savePhone()">Save</button>
-                </div>
-            </div>
-            <hr>
-
-            <div class="row">
-                <div class="col-sm-3 text-muted">Address</div>
-                <div class="col-sm-6" id="address">
-                    <span id="address-text">123, Main Street, Ujjain</span>
-                    <input type="text" id="address-input" value="123, Main Street, Ujjain" style="display:none;"
-                        class="form-control">
-                </div>
-                <div class="col-sm-3">
-                    <button class="btn btn-primary mt-3" id="edit-address-btn" onclick="editAddress()">Edit</button>
-                    <button class="btn btn-success mt-3" id="save-address-btn" style="display:none;"
-                        onclick="saveAddress()">Save</button>
-                </div>
-            </div>
-            <hr>
         </div>
 
         <!-- Password and Security -->
@@ -180,7 +193,7 @@
             <div class="row">
                 <div class="col-sm-3 text-muted">Customer Support</div>
                 <div class="col-sm-9">
-                    <button class="btn btn-danger" id="contact-support-btn">Contact Support</button>
+                    <button class="btn btn-danger" id="contact-support-btn" onclick="window.location.href='contactUs.html';">Contact Support</button>
                 </div>
             </div>
             <hr>
@@ -188,17 +201,10 @@
             <div class="row">
                 <div class="col-sm-3 text-muted">FAQ</div>
                 <div class="col-sm-9">
-                    <a href="/faq.html" class="btn btn-link" id="faq-btn">Go to FAQ</a>
+                    <a href="faq.html" class="btn btn-link" id="faq-btn">Go to FAQ</a>
                 </div>
             </div>
             <hr>
-
-            <div class="row">
-                <div class="col-sm-3 text-muted">Billing Disputes</div>
-                <div class="col-sm-9">
-                    <button class="btn btn-danger" id="file-dispute-btn">File a Dispute</button>
-                </div>
-            </div>
         </div>
 
     </div>

@@ -7,15 +7,111 @@
     <title>Ele-Bill</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <link rel="stylesheet" href="./Css/dashboard_style.css">
+
+    <style>
+        .profile-container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile-container img {
+            height: 100px;
+            border-radius: 50px;
+        }
+
+        .profile-section {
+            background-color: rgba(255, 255, 255, 0.4);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .profile-section h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .info-item input {
+            flex: 1;
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .info-item button {
+            padding: 8px 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .info-item button:hover {
+            background-color: #0056b3;
+        }
+
+        .profile-picture-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 10%;
+        }
+
+        #profilePicture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        #editProfilePicture {
+            background-color: #28a745;
+            padding: 8px 15px;
+            /* Adjust padding for a better fit */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        #editProfilePicture:hover {
+            background-color: #218838;
+        }
+
+        input[readonly] {
+            background-color: #e9ecef;
+        }
+
+        .profile-layout {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .profile-left,
+        .profile-right {
+            width: 48%;
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <img id="logo_image" src="https://res.cloudinary.com/harshdubey1198/image/upload/v1731250797/Ele_bill_logo_o6rt0y.png" alt="Ele-Bill">
+        <img id="logo_image"
+            src="https://res.cloudinary.com/harshdubey1198/image/upload/v1731250797/Ele_bill_logo_o6rt0y.png"
+            alt="Ele-Bill">
         <div class="flex-column align-items-center">
             <a class="w-75" href="home.html">
                 <button class="w-100 rounded my-2 mt-5">
@@ -48,14 +144,75 @@
                 </button>
             </a>
         </div>
-    </div>   
+    </div>
 
     <div class="content">
         <div class="header">
             <h1>Profile</h1>
         </div>
 
-        
+        <div class="profile-container">
+            <!-- Profile Layout -->
+            <div class="profile-layout">
+                <!-- Profile Picture Section (Left Half) -->
+                <section class="profile-left">
+                    <h2>Profile Picture</h2>
+                    <div class="profile-picture-container">
+                        <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg"
+                            id="profilePicture">
+                        <button id="editProfilePicture">Edit</button>
+                    </div>
+                    <input type="file" id="profilePictureInput" style="display: none;">
+                </section>
+
+                <!-- Name Section (Right Half) -->
+                <section class="profile-right">
+                    <h2>Name</h2>
+                    <div class="info-item">
+                        <input type="text" id="firstName" readonly placeholder="First Name">
+                        <button id="editFirstName">Edit</button>
+                    </div>
+                    <div class="info-item">
+                        <input type="text" id="lastName" readonly placeholder="Last Name">
+                        <button id="editLastName">Edit</button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Address Section -->
+            <section class="profile-section" id="address-section">
+                <h2>Address</h2>
+                <div class="info-item">
+                    <input type="text" id="street" readonly placeholder="Street">
+                    <button id="editStreet">Edit</button>
+                </div>
+                <div class="info-item">
+                    <input type="text" id="city" readonly placeholder="City">
+                    <button id="editCity">Edit</button>
+                </div>
+                <div class="info-item">
+                    <input type="text" id="state" readonly placeholder="State">
+                    <button id="editState">Edit</button>
+                </div>
+                <div class="info-item">
+                    <input type="text" id="zipCode" readonly placeholder="Zip Code">
+                    <button id="editZipCode">Edit</button>
+                </div>
+            </section>
+
+            <!-- Contact Information Section -->
+            <section class="profile-section" id="contact-info-section">
+                <h2>Contact Information</h2>
+                <div class="info-item">
+                    <input type="text" id="phoneNumber" readonly placeholder="Phone Number">
+                    <button id="editPhoneNumber">Edit</button>
+                </div>
+                <div class="info-item">
+                    <input type="email" id="emailAddress" readonly placeholder="email address">
+                    <button id="editEmailAddress">Edit</button>
+                </div>
+            </section>
+        </div>
 
         <footer class="footer">
             <div class="footer-container">
@@ -75,10 +232,86 @@
                 </div>
             </div>
         </footer>
-
     </div>
 
     <script src="./Scripts/dashboard_script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Preload the user data (assumed to be available from the backend or local storage)
+            const userData = {
+                firstName: "Aditya",
+                lastName: "Aerpule",
+                email: "aaerpule@gmail.com",
+                phoneNumber: "",
+                address: {
+                    street: "",
+                    city: "",
+                    state: "",
+                    zipCode: ""
+                },
+                profilePicture: "" // Assume the profile picture URL or path is available
+            };
+
+            // Initialize the profile with the existing data
+            document.getElementById('firstName').value = userData.firstName;
+            document.getElementById('lastName').value = userData.lastName;
+            document.getElementById('emailAddress').value = userData.email;
+            document.getElementById('phoneNumber').value = userData.phoneNumber;
+            document.getElementById('street').value = userData.address.street || '';
+            document.getElementById('city').value = userData.address.city || '';
+            document.getElementById('state').value = userData.address.state || '';
+            document.getElementById('zipCode').value = userData.address.zipCode || '';
+
+            // Event listeners for edit/save buttons (update functionality)
+            document.getElementById('editFirstName').addEventListener('click', toggleEdit.bind(null, 'firstName'));
+            document.getElementById('editLastName').addEventListener('click', toggleEdit.bind(null, 'lastName'));
+            document.getElementById('editStreet').addEventListener('click', toggleEdit.bind(null, 'street'));
+            document.getElementById('editCity').addEventListener('click', toggleEdit.bind(null, 'city'));
+            document.getElementById('editState').addEventListener('click', toggleEdit.bind(null, 'state'));
+            document.getElementById('editZipCode').addEventListener('click', toggleEdit.bind(null, 'zipCode'));
+            document.getElementById('editPhoneNumber').addEventListener('click', toggleEdit.bind(null, 'phoneNumber'));
+            document.getElementById('editEmailAddress').addEventListener('click', toggleEdit.bind(null, 'emailAddress'));
+
+            // Profile picture edit functionality
+            document.getElementById('editProfilePicture').addEventListener('click', function () {
+                document.getElementById('profilePictureInput').click();
+            });
+
+            document.getElementById('profilePictureInput').addEventListener('change', function (e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        document.getElementById('profilePicture').src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Toggle edit/save functionality
+            function toggleEdit(field) {
+                const input = document.getElementById(field);
+                const button = document.getElementById('edit' + capitalizeFirstLetter(field));
+
+                if (input.readOnly) {
+                    input.readOnly = false;
+                    button.textContent = 'Save';
+                    button.style.backgroundColor = '#28a745'; // Save button
+                } else {
+                    input.readOnly = true;
+                    button.textContent = 'Edit';
+                    button.style.backgroundColor = '#007bff'; // Edit button
+                    userData[field] = input.value; // Update the field data
+                }
+            }
+
+            // Helper function to capitalize first letter
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+        });
+    </script>
 
 </body>
 

@@ -102,6 +102,13 @@
             color: #333;
         }
 
+        .summary-item ul {
+            list-style-type: none;
+            padding-left: 0;
+            /* Optional: removes any left padding */
+        }
+
+
         /* Quick Actions */
         .quick-actions {
             display: flex;
@@ -227,36 +234,36 @@
         <div class="account-summary">
             <div class="summary-item">
                 <h3>Account Balance</h3>
-                <p>$50</p>
+                <p>₹50</p>
             </div>
             <div class="summary-item">
                 <h3>Recent Transactions</h3>
                 <ul>
-                    <li>Payment: $20 on 10/10/2024</li>
-                    <li>Payment: $30 on 09/30/2024</li>
+                    <li>Payment: ₹1925 on 10/09/2024</li>
+                    <li>Payment: ₹1800 on 08/10/2024</li>
                 </ul>
             </div>
             <div class="summary-item">
                 <h3>Upcoming Bill</h3>
-                <p>$30 due in 5 days</p>
+                <p>₹1429 due in 5 days</p>
             </div>
         </div>
 
         <!-- Quick Actions -->
         <div class="quick-actions">
-            <a href="/Front-End/Bootstrap/profile.html" class="btn">Update Profile</a>
-            <a href="/Front-End/Bootstrap/payments.html" class="btn">Payment History</a>
-            <a href="/Front-End/Bootstrap/bill.html" class="btn">View Bills</a>
+            <a href="profile.html" class="btn">Update Profile</a>
+            <a href="payments.html" class="btn">Payment History</a>
+            <a href="bill.html" class="btn">View Bills</a>
         </div>
 
         <!-- Recent Notifications -->
         <div class="notifications">
             <h3>Recent Notifications</h3>
             <ul>
-                <li><i class="fas fa-bell"></i> Bill due in 5 days. <a href="/Front-End/Bootstrap/bill.html">Pay Now</a>
+                <li><i class="fas fa-bell"></i> Bill due in 5 days. <a href="bill.html">Pay Now</a>
                 </li>
                 <li><i class="fas fa-bell"></i> Profile update required. <a
-                        href="/Front-End/Bootstrap/profile.html">Update Profile</a></li>
+                        href="profile.html">Update Profile</a></li>
             </ul>
         </div>
 
