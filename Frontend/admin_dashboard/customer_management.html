@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ele-Bill - Customer Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/Frontend/Css/dashboard_style.css">
+    <style>
+        /* Add this to make the background translucent */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 15px;
+            overflow: hidden;
+            /* Ensures rounded corners are visible */
+        }
+
+        table th,
+        table td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        table td {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar (same as the dashboard) -->
+    <div class="sidebar">
+        <img id="logo_image"
+            src="https://res.cloudinary.com/harshdubey1198/image/upload/v1731250797/Ele_bill_logo_o6rt0y.png"
+            alt="Ele-Bill">
+        <div class="menu-container">
+            <a href="admin_home.html">
+                <button class="menu-btn">
+                    <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+                </button>
+            </a>
+            <a href="customer_management.html">
+                <button class="menu-btn">
+                    <i class="fas fa-users"></i><span>Customer Management</span>
+                </button>
+            </a>
+            <a href="payments_admin.html">
+                <button class="menu-btn">
+                    <i class="fas fa-credit-card"></i> <span>Payments Overview</span>
+                </button>
+            </a>
+            <a href="bill_generation.html">
+                <button class="menu-btn">
+                    <i class="fas fa-file-invoice"></i> <span>Bill Generation</span>
+                </button>
+            </a>
+            <a href="reports.html">
+                <button class="menu-btn">
+                    <i class="fas fa-chart-line"></i> <span>Reports</span>
+                </button>
+            </a>
+            <a href="settings_admin.html">
+                <button class="menu-btn">
+                    <i class="fas fa-cogs"></i> <span>Settings</span>
+                </button>
+            </a>
+            <a href="/Frontend/index.html">
+                <button id="logout-btn" class="menu-btn">
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="header">
+            <h1>Customer Management</h1>
+        </div>
+
+        <!-- Customer List Section -->
+        <div class="container">
+            <h2>Customers</h2>
+            <button class="btn" onclick="openAddCustomerForm()">Add New Customer</button>
+            <br><br>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Name</th>
+                        <th>Meter ID</th>
+                        <th>Billing Cycle</th>
+                        <th>Contact Info</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows of customer data will go here -->
+                    <tr>
+                        <td>C12345</td>
+                        <td>John Doe</td>
+                        <td>M98765</td>
+                        <td>Monthly</td>
+                        <td>Email: john@example.com<br>Phone: 9876543210</td>
+                        <td>Active</td>
+                        <td>
+                            <button class="btn btn-small">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>C12345</td>
+                        <td>Aditya Aerpule</td>
+                        <td>M98765</td>
+                        <td>Monthly</td>
+                        <td>Email: adityaaerpule@gmail.com<br>Phone: 9876543210</td>
+                        <td>Active</td>
+                        <td>
+                            <button class="btn btn-small">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>C12345</td>
+                        <td>Hrishika Verma</td>
+                        <td>M98765</td>
+                        <td>Monthly</td>
+                        <td>Email: hrishikaverma71@gmail.com<br>Phone: 9876543210</td>
+                        <td>Active</td>
+                        <td>
+                            <button class="btn btn-small">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>C12345</td>
+                        <td>Parinay Raya</td>
+                        <td>M98765</td>
+                        <td>Monthly</td>
+                        <td>Email: rayaparinay@gmail.com<br>Phone: 9876543210</td>
+                        <td>Active</td>
+                        <td>
+                            <button class="btn btn-small">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add/Edit Customer Form (can be a modal or a hidden section) -->
+        <div id="customerForm" style="display:none;" class="container">
+            <h2>Add/Edit Customer</h2>
+            <form id="addEditCustomerForm">
+                <div>
+                    <label for="customerName">Name:</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+                <div>
+                    <label for="meterId">Meter ID:</label>
+                    <input type="text" id="meterId" name="meterId" required>
+                </div>
+                <div>
+                    <label for="billingCycle">Billing Cycle:</label>
+                    <select id="billingCycle" name="billingCycle">
+                        <option value="monthly">Monthly</option>
+                        <option value="quarterly">Quarterly</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+
+        <!-- Footer (same as the dashboard) -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <p>&copy; 2024 Ele-Bill</p>
+                </div>
+                <div class="footer-right">
+                    <a href="terms.html">Terms & Conditions</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript to show/hide the add/edit customer form
+        function openAddCustomerForm() {
+            document.getElementById('customerForm').style.display = 'block';
+        }
+
+        // Fetch customer data from backend API
+        async function fetchCustomers() {
+            try {
+                const response = await fetch('/api/customers'); // Ensure the API route is correct
+                const customers = await response.json();
+
+                // Populate the customer table
+                const customerTableBody = document.querySelector('tbody');
+                customerTableBody.innerHTML = "";  // Clear previous data to avoid duplication
+
+                customers.forEach(customer => {
+                    const row = document.createElement('tr');
+
+                    row.innerHTML = `
+                        <td>${customer.customerId}</td>
+                        <td>${customer.firstName} ${customer.lastName}</td>
+                        <td>${customer.meterId}</td>
+                        <td>${customer.billingCycle}</td>
+                        <td>Email: ${customer.email}<br>Phone: ${customer.phone}</td>
+                        <td>${customer.status}</td>
+                        <td>
+                            <button class="btn btn-small" onclick="editCustomer('${customer._id}')">Edit</button>
+                            <button class="btn btn-danger" onclick="deleteCustomer('${customer._id}')">Delete</button>
+                        </td>
+                    `;
+
+                    customerTableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching customers:', error);
+            }
+        }
+
+        // Call the function to load the customers when the page loads
+        window.onload = fetchCustomers;
+    </script>
+
+    <script src="/Frontend/Scripts/dashboard_script.js"></script>
+
+</body>
+
+</html>

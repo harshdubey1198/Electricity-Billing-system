@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Generation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/Frontend/Css/dashboard_style.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-left: 25%;
+            margin-right: 5%;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: #333;
+        }
+
+        .search-filter {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .search-filter input,
+        .search-filter select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 48%;
+        }
+
+        .generate-bill-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            padding: 15px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        table th {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        table td {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        table tr:nth-child(even) td {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        table td button {
+            background-color: #ff9800;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        table td button:hover {
+            background-color: #f57c00;
+        }
+
+        .select-all-btn {
+            margin: 20px 0;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .select-all-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img id="logo_image"
+            src="https://res.cloudinary.com/harshdubey1198/image/upload/v1731250797/Ele_bill_logo_o6rt0y.png"
+            alt="Ele-Bill">
+        <div class="menu-container">
+            <a href="admin_home.html">
+                <button class="menu-btn">
+                    <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+                </button>
+            </a>
+            <a href="customer_management.html">
+                <button class="menu-btn">
+                    <i class="fas fa-users"></i><span>Customer Management</span>
+                </button>
+            </a>
+            <a href="payments_admin.html">
+                <button class="menu-btn">
+                    <i class="fas fa-credit-card"></i> <span>Payments Overview</span>
+                </button>
+            </a>
+            <a href="bill_generation.html">
+                <button class="menu-btn">
+                    <i class="fas fa-file-invoice"></i> <span>Bill Generation</span>
+                </button>
+            </a>
+            <a href="reports.html">
+                <button class="menu-btn">
+                    <i class="fas fa-chart-line"></i> <span>Reports</span>
+                </button>
+            </a>
+            <a href="settings_admin.html">
+                <button class="menu-btn">
+                    <i class="fas fa-cogs"></i> <span>Settings</span>
+                </button>
+            </a>
+            <a href="/Frontend/index.html">
+                <button id="logout-btn" class="menu-btn">
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Bill Generation</h1>
+
+        <!-- Search and Filter Section -->
+        <div class="search-filter">
+            <input type="text" id="searchBill" placeholder="Search by Bill ID or Customer Name" onkeyup="searchBills()">
+            <select id="filterStatus" onchange="filterBills()">
+                <option value="">Select Payment Status</option>
+                <option value="paid">Paid</option>
+                <option value="unpaid">Unpaid</option>
+            </select>
+        </div>
+
+        <!-- Unpaid Bills Table -->
+        <h2>Unpaid Bills</h2>
+        <table id="unpaidBillsTable">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="selectAll" onclick="toggleSelectAll()"></th>
+                    <th>Bill ID</th>
+                    <th>Customer Name</th>
+                    <th>Billing Cycle</th>
+                    <th>Bill Amount</th>
+                    <th>Payment Status</th>
+                    <th>Due Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Unpaid bill rows will be dynamically added here -->
+            </tbody>
+        </table>
+
+        <button class="select-all-btn" onclick="generateBills()">Generate Bills for Selected</button>
+    </div>
+
+    <script>
+        // Sample data for unpaid bills (to be replaced with dynamic data from your database)
+        const unpaidBills = [
+            { id: 101, customerName: "John Doe", billingCycle: "October 2024", billAmount: 150, paymentStatus: "unpaid", dueDate: "2024-11-30" },
+            { id: 102, customerName: "Jane Smith", billingCycle: "October 2024", billAmount: 120, paymentStatus: "unpaid", dueDate: "2024-11-30" },
+            { id: 103, customerName: "Michael Brown", billingCycle: "October 2024", billAmount: 200, paymentStatus: "unpaid", dueDate: "2024-11-30" },
+        ];
+
+        // Function to display unpaid bills in the table
+        function displayUnpaidBills() {
+            const tableBody = document.querySelector("#unpaidBillsTable tbody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            unpaidBills.forEach(bill => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td><input type="checkbox" class="selectBill" data-id="${bill.id}"></td>
+                    <td>${bill.id}</td>
+                    <td>${bill.customerName}</td>
+                    <td>${bill.billingCycle}</td>
+                    <td>${bill.billAmount}</td>
+                    <td>${bill.paymentStatus}</td>
+                    <td>${bill.dueDate}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Toggle select all checkboxes
+        function toggleSelectAll() {
+            const selectAllCheckbox = document.querySelector("#selectAll");
+            const checkboxes = document.querySelectorAll(".selectBill");
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+        }
+
+        // Function to generate bills for selected unpaid bills
+        function generateBills() {
+            const selectedBills = [];
+            const checkboxes = document.querySelectorAll(".selectBill:checked");
+            checkboxes.forEach(checkbox => {
+                const billID = checkbox.getAttribute("data-id");
+                selectedBills.push(billID);
+            });
+
+            if (selectedBills.length > 0) {
+                alert(`Generating bills for selected bill IDs: ${selectedBills.join(", ")}`);
+                // You can make an API call to generate bills for these selected bills
+            } else {
+                alert("Please select at least one bill to generate.");
+            }
+        }
+
+        // Initialize the unpaid bills table on page load
+        window.onload = function () {
+            displayUnpaidBills();
+        };
+    </script>
+
+    <script src="/Frontend/Scripts/dashboard_script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ele-Bill - Payments Overview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/Frontend/Css/dashboard_style.css">
+    <style>
+        /* Add this to make the background translucent */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 15px;
+            overflow: hidden;
+            /* Ensures rounded corners are visible */
+        }
+
+        table th,
+        table td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        table td {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar (same as the dashboard) -->
+    <div class="sidebar">
+        <img id="logo_image" src="https://res.cloudinary.com/harshdubey1198/image/upload/v1731250797/Ele_bill_logo_o6rt0y.png" alt="Ele-Bill">
+        <div class="menu-container">
+            <a href="admin_home.html">
+                <button class="menu-btn">
+                    <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+                </button>
+            </a>
+            <a href="customer_management.html">
+                <button class="menu-btn">
+                    <i class="fas fa-users"></i><span>Customer Management</span>
+                </button>
+            </a>
+            <a href="payments_admin.html">
+                <button class="menu-btn">
+                    <i class="fas fa-credit-card"></i> <span>Payments Overview</span>
+                </button>
+            </a>
+            <a href="bill_generation.html">
+                <button class="menu-btn">
+                    <i class="fas fa-file-invoice"></i> <span>Bill Generation</span>
+                </button>
+            </a>
+            <a href="reports.html">
+                <button class="menu-btn">
+                    <i class="fas fa-chart-line"></i> <span>Reports</span>
+                </button>
+            </a>
+            <a href="settings_admin.html">
+                <button class="menu-btn">
+                    <i class="fas fa-cogs"></i> <span>Settings</span>
+                </button>
+            </a>
+            <a href="/Frontend/index.html">
+                <button id="logout-btn" class="menu-btn">
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="header">
+            <h1>Payments Overview</h1>
+        </div>
+
+        <!-- Payments Statistics Section -->
+        <div class="stats-container">
+            <div class="stats-box">
+                <h3>Total Payments</h3>
+                <p>₹ 45,000</p>
+            </div>
+            <div class="stats-box">
+                <h3>Total Revenue</h3>
+                <p>₹ 40,000</p>
+            </div>
+            <div class="stats-box">
+                <h3>Successful Payments</h3>
+                <p>250</p>
+            </div>
+            <div class="stats-box">
+                <h3>Pending Payments</h3>
+                <p>50</p>
+            </div>
+        </div>
+
+        <!-- Payment Search Section -->
+        <div class="search-container">
+            <input type="text" id="searchPayment" placeholder="Search by Customer Name or Payment ID">
+            <button class="btn" onclick="searchPayments()">Search</button>
+        </div>
+
+        <!-- Payments List Section -->
+        <div class="container">
+            <h2>Payment Transactions</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Payment ID</th>
+                        <th>Customer Name</th>
+                        <th>Amount</th>
+                        <th>Method</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows of payment data will go here -->
+                    <tr>
+                        <td>P12345</td>
+                        <td>John Doe</td>
+                        <td>₹150</td>
+                        <td>Credit Card</td>
+                        <td>2024-11-10</td>
+                        <td>Completed</td>
+                        <td>
+                            <button class="btn btn-small" onclick="viewPaymentDetails('P12345')">View</button>
+                            <button class="btn btn-small" onclick="updatePaymentStatus('P12345')">Update Status</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>P12346</td>
+                        <td>Aditya Aerpule</td>
+                        <td>₹200</td>
+                        <td>Bank Transfer</td>
+                        <td>2024-11-11</td>
+                        <td>Pending</td>
+                        <td>
+                            <button class="btn btn-small" onclick="viewPaymentDetails('P12346')">View</button>
+                            <button class="btn btn-small" onclick="updatePaymentStatus('P12346')">Update Status</button>
+                        </td>
+                    </tr>
+                    <!-- Additional payment rows -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer (same as the dashboard) -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <p>&copy; 2024 Ele-Bill</p>
+                </div>
+                <div class="footer-right">
+                    <a href="terms.html">Terms & Conditions</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/Frontend/Scripts/dashboard_script.js"></script>
+
+</body>
+
+</html>

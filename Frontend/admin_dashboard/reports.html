@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+    <link rel="stylesheet" href="/Frontend/Css/dashboard_style.css"">
+    <style>
+        /* Add this to make the background translucent */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 15px;
+            overflow: hidden;
+            /* Ensures rounded corners are visible */
+        }
+
+        table th,
+        table td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        table td {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+     <!-- Sidebar -->
+     <div class="sidebar">
+        <img id="logo_image"
+            src="https://res.cloudinary.com/harshdubey1198/image/upload/v1731250797/Ele_bill_logo_o6rt0y.png"
+            alt="Ele-Bill">
+        <div class="menu-container">
+            <a href="admin_home.html">
+                <button class="menu-btn">
+                    <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+                </button>
+            </a>
+            <a href="customer_management.html">
+                <button class="menu-btn">
+                    <i class="fas fa-users"></i><span>Customer Management</span>
+                </button>
+            </a>
+            <a href="payments_admin.html">
+                <button class="menu-btn">
+                    <i class="fas fa-credit-card"></i> <span>Payments Overview</span>
+                </button>
+            </a>
+            <a href="bill_generation.html">
+                <button class="menu-btn">
+                    <i class="fas fa-file-invoice"></i> <span>Bill Generation</span>
+                </button>
+            </a>
+            <a href="reports.html">
+                <button class="menu-btn">
+                    <i class="fas fa-chart-line"></i> <span>Reports</span>
+                </button>
+            </a>
+            <a href="settings_admin.html">
+                <button class="menu-btn">
+                    <i class="fas fa-cogs"></i> <span>Settings</span>
+                </button>
+            </a>
+            <a href="/Frontend/index.html">
+                <button id="logout-btn" class="menu-btn">
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                </button>
+            </a>
+        </div>
+    </div>
+
+   <!-- Main Content -->
+   <div class="content">
+    <div class="header">
+        <h1>Reports</h1>
+    </div>
+
+        <!-- Report Type Selection -->
+        <div class="report-selection">
+            <select id="reportType" onchange="generateReport()">
+                <option value="">Select Report Type</option>
+                <option value="payment">Payment Report</option>
+                <option value="consumption">Consumption Report</option>
+                <option value="customer">Customer Report</option>
+            </select>
+        </div>
+
+        <!-- Report Table -->
+        <table id="reportTable">
+            <thead>
+                <tr>
+                    <th>Report ID</th>
+                    <th>Customer Name</th>
+                    <th>Details</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows of payment data will go here -->
+                <tr>
+                    <td>P12345</td>
+                    <td>John Doe</td>
+                    <td>$150</td>
+                    <td>Credit Card</td>
+                    <td>2024-11-10</td>
+                    <td>Completed</td>
+                    <td>
+                        <button class="btn btn-small" onclick="viewPaymentDetails('P12345')">View</button>
+                        <button class="btn btn-small" onclick="updatePaymentStatus('P12345')">Update Status</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>P12346</td>
+                    <td>Aditya Aerpule</td>
+                    <td>$200</td>
+                    <td>Bank Transfer</td>
+                    <td>2024-11-11</td>
+                    <td>Pending</td>
+                    <td>
+                        <button class="btn btn-small" onclick="viewPaymentDetails('P12346')">View</button>
+                        <button class="btn btn-small" onclick="updatePaymentStatus('P12346')">Update Status</button>
+                    </td>
+                </tr>
+                <!-- Additional payment rows -->
+            </tbody>
+            <tbody>
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
+         <!-- Footer (same as the dashboard) -->
+         <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <p>&copy; 2024 Ele-Bill</p>
+                </div>
+                <div class="footer-right">
+                    <a href="terms.html">Terms & Conditions</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Sample report data (for demo purposes)
+        const paymentReports = [
+            { reportID: 1, customerName: 'John Doe', details: 'January 2024 Payment', amount: 1500, date: '2024-01-10' },
+            { reportID: 2, customerName: 'Jane Smith', details: 'February 2024 Payment', amount: 1200, date: '2024-02-05' }
+        ];
+
+        const consumptionReports = [
+            { reportID: 1, customerName: 'John Doe', details: 'January 2024 Consumption (200 units)', amount: 1500, date: '2024-01-10' },
+            { reportID: 2, customerName: 'Jane Smith', details: 'February 2024 Consumption (150 units)', amount: 1200, date: '2024-02-05' }
+        ];
+
+        const customerReports = [
+            { reportID: 1, customerName: 'John Doe', details: 'Account Overview', amount: 0, date: '2024-01-10' },
+            { reportID: 2, customerName: 'Jane Smith', details: 'Account Overview', amount: 0, date: '2024-02-05' }
+        ];
+
+        // Function to render the report table based on the selected report type
+        function generateReport() {
+            const reportType = document.getElementById('reportType').value;
+            const tableBody = document.querySelector('#reportTable tbody');
+            tableBody.innerHTML = '';
+
+            let reportsData = [];
+
+            if (reportType === 'payment') {
+                reportsData = paymentReports;
+            } else if (reportType === 'consumption') {
+                reportsData = consumptionReports;
+            } else if (reportType === 'customer') {
+                reportsData = customerReports;
+            }
+
+            reportsData.forEach(report => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${report.reportID}</td>
+                    <td>${report.customerName}</td>
+                    <td>${report.details}</td>
+                    <td>${report.amount}</td>
+                    <td>${report.date}</td>
+                    <td>
+                        <button onclick="viewReport(${report.reportID})">View</button>
+                        <button onclick="downloadReport(${report.reportID})">Download</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to view the report (for demo, it just shows an alert)
+        function viewReport(reportID) {
+            alert(`Viewing report with ID: ${reportID}`);
+        }
+
+        // Function to download the report (for demo, it just shows an alert)
+        function downloadReport(reportID) {
+            alert(`Downloading report with ID: ${reportID}`);
+        }
+    </script>
+    
+    <script src="/Frontend/Scripts/dashboard_script.js"></script>
+
+
+</body>
+</html>
